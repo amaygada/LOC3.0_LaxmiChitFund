@@ -18,7 +18,7 @@ import Chat from './src/chat.js';
 import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
 import CityList from './src/Screens/PlanNew/CityList';
-import Map from './src/components/map'
+import Map from './src/map_test'
 
 const Stack = createStackNavigator();
 

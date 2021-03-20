@@ -39,14 +39,14 @@ export default class Map extends React.Component{
                     animationDuration={6000}
                     followUserMode={'normal'}
                     defaultSettings={{
-                    centerCoordinate: [72.911910,19.094180],
+                    centerCoordinate: [this.props.long , this.props.lat],
                     zoomLevel: 14
                     }}
                 />
                 <MapboxGL.PointAnnotation
                     key="pointAnnotation"
                     id="pointAnnotation"
-                    coordinate={[72.911910,19.094180]}>
+                    coordinate={[this.props.long , this.props.lat]}>
                     <View style={{
                         height: 20, 
                         width: 20, 
@@ -63,16 +63,14 @@ export default class Map extends React.Component{
     }
 }
 
-
+//72.911910,19.094180
 const styles = StyleSheet.create({
     page: {
       flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
       backgroundColor: "#F5FCFF"
     },
     container: {
-      height: hp("100%"),
+      height: hp("50%"),
       width: wp("100%"),
       backgroundColor: "tomato"
     },

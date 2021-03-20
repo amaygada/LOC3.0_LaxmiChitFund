@@ -80,6 +80,10 @@ class App extends Component {
     this._unsubscribe();
   }
 
+  callback = () => {
+    this.props.navigation.navigate('Indivisual City');
+  };
+
   _renderScrollViewContent() {
     const data = this.props._new.cities;
     console.log(data);
@@ -115,6 +119,7 @@ class App extends Component {
             city={_.name}
             caption={_.caption}
             image={_.image_uri}
+            callback={this.callback}
           />
         ))}
       </View>

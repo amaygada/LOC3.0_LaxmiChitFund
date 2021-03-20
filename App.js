@@ -18,7 +18,7 @@ import Chat from './src/chat.js';
 import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
 import CityList from './src/Screens/PlanNew/CityList';
-
+import IndivisualCity from './src/Screens/PlanNew/IndivisualCity';
 const Stack = createStackNavigator();
 
 const theme = {
@@ -43,7 +43,11 @@ export default class App extends React.Component {
                 <Stack.Screen name="Select Country" component={chooseCountry} />
                 <Stack.Screen name="Chat" component={Chat} />
                 <Stack.Screen name="Opt" component={Options} />
-                <Stack.Screen name="City List" component={CityList}/>
+                <Stack.Screen name="City List" component={CityList} />
+                <Stack.Screen
+                  name="Indiviual City"
+                  component={IndivisualCity}
+                />
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

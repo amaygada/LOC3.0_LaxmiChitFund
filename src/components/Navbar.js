@@ -8,7 +8,7 @@ function Header() {
       <>
         <Navs activeKey="/">
           <Nav className="mr-auto">
-            <Navbar.Brand href="/" style={{color: '#D86A04', fontWeight: '600'}}>Lost and Found</Navbar.Brand>
+            <Navbar.Brand href="/" style={{color: '#D86A04', fontWeight: '600'}}>TravelBuddy</Navbar.Brand>
           </Nav>
             <Register href='/' eventKey="link-1"onClick={()=>{
               localStorage.removeItem('access');
@@ -23,7 +23,7 @@ function Header() {
       <>
         <Navs activeKey="/">
           <Nav className="mr-auto">
-            <Navbar.Brand href="/" style={{color: '#D86A04', fontWeight: '600'}}>Lost and Found</Navbar.Brand>
+            <Navbar.Brand href="/" style={{color: '#D86A04', fontWeight: '600'}}>TravelBuddy</Navbar.Brand>
           </Nav>
             <Register href='/login' eventKey="link-1">Login</Register>
             <Register href='/register' eventKey="link-1">Sign Up</Register>

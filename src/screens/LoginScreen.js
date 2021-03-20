@@ -27,7 +27,7 @@ function LoginScreen() {
       body:JSON.stringify(values),
       redirect: 'follow'
     }
-    const data = await fetch("https://thawing-sierra-99222.herokuapp.com/api/users/login", requestOptions);
+    const data = await fetch("https://unsungtraveller.herokuapp.com/api/v1/users/login", requestOptions);
     setLoading(false);
     console.log(data.status);
     const temp = await data.text();
@@ -82,7 +82,7 @@ function LoginScreen() {
                     <Button className="btn btn-primary my-2" onClick={() => handleClick()}>Login</Button>
                   </div>
                 </form>
-                <Row className="text-center"><span style={{color:`${message.color}`, width:'100%', textAlign:'center'}}>{message.message}&nbsp;{loading && <Loader />}</span></Row>
+                <Row className="text-center"><span style={{color:`${message.color}`, width:'100%', textAlign:'center'}}>{message.message}&nbsp;{loading && <Loader height='20px' width='20px'/>}</span></Row>
                 <Row className="text-center">
                   <Link to="/register" style={{width:'100%'}}>Sign Up</Link>
                 </Row>

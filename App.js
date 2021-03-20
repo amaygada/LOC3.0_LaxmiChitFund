@@ -11,15 +11,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 //page imports
-import CurvedHeader from './src/components/curved_header.js';
 import Login from './src/details/login.js';
 import Signup from './src/details/signup.js';
 import Test from './src/test.js';
 import Map from './src/map_test.js';
 import Chat from './src/chat.js';
-import FirstPage from './src/Screens/FirstPage.js';
 import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
+import CityList from './src/Screens/PlanNew/CityList';
 
 const Stack = createStackNavigator();
 
@@ -38,15 +37,15 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Select Country">
+                initialRouteName="City List">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
                 <Stack.Screen name="Map" component={Map} />
-                <Stack.Screen name="First Page" component={FirstPage} />
                 <Stack.Screen name="Select Country" component={chooseCountry} />
                 <Stack.Screen name="Chat" component={Chat} />
                 <Stack.Screen name="Opt" component={Options} />
+                <Stack.Screen name="City List" component={CityList} />
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

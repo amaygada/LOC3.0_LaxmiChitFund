@@ -41,19 +41,6 @@ const Weather = ({weather, temperature, city}) => {
           {weatherConditions[weather].title}
         </Text>
       </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          mode="outlined"
-          style={[
-            styles.button,
-            {color: weatherConditions[weather].textColor},
-          ]}>
-          See Hotels
-        </Button>
-        <Button mode="outlined" style={styles.button}>
-          Landmarks
-        </Button>
-      </View>
     </View>
   );
 };

@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Subheading, Title, ActivityIndicator} from 'react-native-paper';
+import {Subheading, Title, ActivityIndicator, Button} from 'react-native-paper';
 import {API_KEY} from '../../components/weather/weatherAPIKey';
 import Weather from '../../components/weather/weather';
 import {weatherConditions} from '../../components/weather/weatherConditions';
@@ -48,8 +48,13 @@ export default class Map_test extends React.Component {
     console.log(this.state.city);
   }
 
+  go_to_landmark = () => {
+    this.props.navigation.navigate('Landmark');
+  };
+
   render() {
     let obj = this.props.route.params.obj;
+    console.log(obj);
     const {isLoading} = this.state;
     return (
       <View style={styles.page}>
@@ -76,6 +81,39 @@ export default class Map_test extends React.Component {
               temperature={this.state.temperature}
               city={this.state.city}
             />
+            <View style={styles.buttonContainer}>
+              <Button
+                labelStyle={{
+                  color:
+                    weatherConditions[this.state.weatherCondition].textColor,
+                }}
+                mode="outlined"
+                style={[
+                  styles.button,
+                  {
+                    borderColor:
+                      weatherConditions[this.state.weatherCondition].textColor,
+                  },
+                ]}>
+                See Hotels
+              </Button>
+              <Button
+                labelStyle={{
+                  color:
+                    weatherConditions[this.state.weatherCondition].textColor,
+                }}
+                mode="outlined"
+                style={[
+                  styles.button,
+                  {
+                    borderColor:
+                      weatherConditions[this.state.weatherCondition].textColor,
+                  },
+                ]}
+                onPress={this.go_to_landmark}>
+                Landmarks
+              </Button>
+            </View>
           </LinearGradient>
         )}
       </View>
@@ -106,5 +144,25 @@ const styles = StyleSheet.create({
   text: {
     width: wp('90%'),
     margin: wp('5%'),
+  },
+  button: {
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginHorizontal: wp('10%'),
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: hp('2%'),
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: wp('10%'),
+    justifyContent: 'space-evenly',
   },
 });

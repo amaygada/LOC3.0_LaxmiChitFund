@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: hp('2%'),
     width: wp('96%'),
-    height: hp('7%'),
+    height: hp('7+%'),
     alignSelf: 'center',
     justifyContent: 'center',
     backgroundColor: '#1e5f7f',

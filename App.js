@@ -18,6 +18,7 @@ import Chat from './src/chat.js';
 import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
 import CityList from './src/Screens/PlanNew/CityList';
+import Map from './src/components/map'
 
 const Stack = createStackNavigator();
 
@@ -28,7 +29,7 @@ const theme = {
 };
 
 export default class App extends React.Component {
-  render() {
+  render(){
     return (
       <PaperProvider theme={theme}>
         <Provider store={Store}>
@@ -36,7 +37,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Test">
+                initialRouteName="Map">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
@@ -44,6 +45,7 @@ export default class App extends React.Component {
                 <Stack.Screen name="Chat" component={Chat} />
                 <Stack.Screen name="Opt" component={Options} />
                 <Stack.Screen name="City List" component={CityList}/>
+                <Stack.Screen name="Map" component={Map}/>
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

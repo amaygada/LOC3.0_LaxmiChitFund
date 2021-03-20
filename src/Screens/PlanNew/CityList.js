@@ -58,7 +58,7 @@ class App extends Component {
             "long" : i.longitude,
             "image_uri" : im,
             "destinationId" : i.destinationId,
-            "caption" : i.caption 
+            "caption" : i.caption.replace(/(<([^>]+)>)/gi, "") 
           }
           ll.push(o)
         }

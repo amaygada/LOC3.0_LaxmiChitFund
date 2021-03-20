@@ -157,6 +157,7 @@ class AddExpense extends React.Component {
         date: p,
         reason: this.state.reason,
         amount: this.state.amount,
+        imageURI: this.state.imgURI,
       });
       //this.props.set_expense([])
       this.props.navigation.navigate('Expense');

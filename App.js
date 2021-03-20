@@ -23,6 +23,7 @@ import Landmarks from './src/Screens/PlanNew/landmark_list'
 import Extra from './src/Screens/PlanNew/extra_deets'
 import IndivisualCity from './src/Screens/PlanNew/IndivisualCity';
 import Hotels from './src/Screens/PlanNew/hotel_list'
+import Settings from './src/Screens/settings'
 
 const Stack = createStackNavigator();
 
@@ -41,7 +42,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Hotel">
+                initialRouteName="Settings">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
@@ -54,6 +55,7 @@ export default class App extends React.Component {
                 <Stack.Screen name="Extra" component={Extra}/>
                 <Stack.Screen name="Indivisual City" component={IndivisualCity}/>
                 <Stack.Screen name="Hotel" component={Hotels}/>
+                <Stack.Screen name="Settings" component={Settings}/>
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

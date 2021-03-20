@@ -52,6 +52,10 @@ export default class Map_test extends React.Component {
     this.props.navigation.navigate('Landmark')
   }
 
+  go_to_hotel = () => {
+    this.props.navigation.navigate('Hotel' , {did : this.props.route.params.obj.destinationId})
+  }
+
   render() {
     let obj = this.props.route.params.obj;
     console.log(obj)
@@ -82,7 +86,7 @@ export default class Map_test extends React.Component {
               city={this.state.city}
             />
             <View style={styles.buttonContainer}>
-        <Button labelStyle={{color : "#fff"}} mode="outlined" style={styles.button}>
+        <Button labelStyle={{color : "#fff"}} mode="outlined" style={styles.button} onPress={this.go_to_hotel}>
           See Hotels
         </Button>
         <Button labelStyle={{color : "#fff"}} mode="outlined" style={styles.button} onPress={this.go_to_landmark}>

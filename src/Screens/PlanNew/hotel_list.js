@@ -15,8 +15,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {connect} from 'react-redux';
-import {add_cities_to_new} from './../../redux/actions';
-import {get_cities_attr, get_image_city} from './../../api/api';
+import {add_hotels_to_new} from './../../redux/actions';
+import {get_hotels , get_hotel_photo} from './../../api/api';
 
 const HEADER_MAX_HEIGHT = hp('45%');
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : hp('15%');
@@ -38,33 +38,39 @@ class Hotel extends Component {
 
   get_cities_and_attr = async () => {
     try {
+      let a = this.props._new.deets.start_date
+      let b = this.props._new.deets.end_date
+      let p = a.getMonth() + 1
+      let q = b.getMonth() + 1
+      p = a.getFullYear() + '-' + '0' + p + '-' +  a.getDate()
+      q = b.getFullYear() + '-' + '0' + q + '-' +  b.getDate()
       let ll = [];
-      const response = await get_cities_attr(this.props._new.country);
-      console.log(response['data']['suggestions'][0]['entities']);
-      let extracted = response['data']['suggestions'][0]['entities'];
+      const response = await get_hotels(this.props.route.params.did , p , q , this.props._new.deets.number_of_people);
+      console.log(p , q);
+      let extracted = response.data.data.body["searchResults"].results;
+      let count = 0
       for (let i of extracted) {
-        if (i.type === 'CITY') {
-          let im = '';
-          try {
-            const response = await get_image_city(i.name.toLowerCase());
-            im = response['data']['photos'][0]['image']['mobile']; //use "web" for web compatible images
-          } catch (e) {
-            im = 'None';
-            console.log(e);
-          }
           let o = {
-            name: i.name,
-            lat: i.latitude,
-            long: i.longitude,
-            image_uri: im,
-            destinationId: i.destinationId,
-            caption: i.caption.replace(/(<([^>]+)>)/gi, ''),
-          };
+            "address" : i.address.countryCode + " " + i.address.streetAddress + " " + i.address.locality + " " + i.address.postalCode +" " + i.address.countryName,
+            "coordinates" : {"lat" : i.coordinate.lat , "long" : i.coordinate.lon},
+            "name" : i.name,
+            "price" : i.price,
+            "star" : i.starRating,
+            "id" : i.id,
+            "im" : "None" 
+          }
+          count +=1
+          let r = ""
+          if(count<8) {
+            r = await get_hotel_photo(i.id)
+            o["im"] = r.data.hotelImages[0]["baseUrl"].replace(/(_{size})/gi, '')
+          }else{
+            break;
+          }
           ll.push(o);
-        }
       }
       console.log(ll); //this is the list with all deets
-      await this.props.add_cities_to_new(ll); // this is redux part
+      await this.props.add_hotels_to_new(ll); // this is redux part
     } catch (e) {
       console.log(e);
     }
@@ -72,7 +78,7 @@ class Hotel extends Component {
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
-      //this.get_cities_and_attr();
+      this.get_cities_and_attr();
     });
   }
 
@@ -86,7 +92,7 @@ class Hotel extends Component {
   };
 
   _renderScrollViewContent() {
-    const data = this.props._new.cities;
+    const data = this.props._new.hotels;
 
     return (
       <View style={styles.scrollViewContent}>
@@ -94,8 +100,8 @@ class Hotel extends Component {
           <CityComponent
             obj={_}
             city={_.name}
-            caption={_.caption}
-            image={_.image_uri}
+            caption={_.address}
+            image={_.im}
             callback={this.callback}
           />
         ))}
@@ -105,7 +111,7 @@ class Hotel extends Component {
 
   render() {
     // Because of content inset the scroll value will be negative on iOS so bring
-    // it back to 0.
+    // it back to 0.Test
     const scrollY = Animated.add(
       this.state.scrollY,
       Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0,
@@ -138,7 +144,7 @@ class Hotel extends Component {
       extrapolate: 'clamp',
     });
 
-    if (typeof this.props._new.cities !== 'undefined') {
+    if (typeof this.props._new.hotels !== 'undefined') {
       return (
         <View style={styles.fill}>
           <StatusBar
@@ -218,7 +224,7 @@ class Hotel extends Component {
             }}>
             <ActivityIndicator
               style={{alignSelf: 'center'}}
-              animating={typeof this.props._new.cities === 'undefined'}
+              animating={typeof this.props._new.hotels === 'undefined'}
               color="#1e5f74"
               size="small"
             />
@@ -233,7 +239,7 @@ const msp = state => ({
   _new: state.new,
 });
 
-export default connect(msp, {add_cities_to_new})(Hotel);
+export default connect(msp, {add_hotels_to_new})(Hotel);
 
 const styles = StyleSheet.create({
   fill: {

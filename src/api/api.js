@@ -46,3 +46,43 @@ export const get_image_city = async (city) => {
     let response = await axios.get(url)
     return response
 }
+
+export const get_hotels = async (did , sdate , edate , num) => {
+    const options = {
+        method: 'GET',
+        url: 'https://hotels4.p.rapidapi.com/properties/list',
+        params: {
+          destinationId: did,
+          pageNumber: '1',
+          checkIn: sdate,
+          checkOut: edate,
+          pageSize: '25',
+          adults1: num,
+          currency: 'USD',
+          locale: 'en_US',
+          sortOrder: 'PRICE'
+        },
+        headers: {
+          'x-rapidapi-key': 'e3078ac64amsh7ca33c2f0f6ba25p1cb3c2jsn3201da75e3b0',
+          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+        }
+      };
+      
+      let response = await axios.request(options)
+      return response
+}
+
+export const get_hotel_photo = async (_id) => {
+    const options = {
+        method: 'GET',
+        url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
+        params: {id: _id},
+        headers: {
+          'x-rapidapi-key': 'c5d58e6967msh3f4f3f0fbdaa628p13eb8djsn66d180fdca4d',
+          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+        }
+      };
+      
+      let response = await axios.request(options)
+      return response
+}

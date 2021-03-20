@@ -1,0 +1,15 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Open Sans', sans-serif;
+  color: #222831;
+}
+.leaflet-container{
+  width:200px;
+  height:200px;
+  border-radius: 20px;
+}
+.gYvUSq{
+  padding:0;
+}

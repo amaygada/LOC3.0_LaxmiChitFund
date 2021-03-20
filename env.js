@@ -1,0 +1,12 @@
+export const dialogflowConfig = {
+    "type": "service_account",
+    "project_id": "lochackathon",
+    "private_key_id": "b4b29e45f917dfba0d3013b209335613d8e7b373",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD4rvOq1BZhscOc\nCgigqORjydW2kotHvNL+OxO3RWfMP9f+zv+3nxhBSyDga2wj601B3f2sxP6hfz0a\neBuefGFiKQOgF0+KZFBMDUyZyzgB/Kt3XXbRjteu0MvxsssCkIb3QxNMUhkACT1p\n/uE2fyz+6BCILJvp2dgIJvAtPtzNig9WgoDOqmfF0KsnQYjH7bOv0J5ha4O9AV32\nLnC84GUTONSFaYIPvxfBoaZ/LckNvWvywgD2d4xBiGHwwKSDiA/EBeiSbnd/HYLh\nsqcxB96rax/JlwpgJ67TYqxSmXRCPKTxhXnsjx9vB5eAaSx5qDFPVfFVmfqHeCZp\nD3nLn+A/AgMBAAECggEAQTeIeX1jXT2EQhCzkIaaVr0gyd+GnUqcvsV5dy/Bd+Qq\nXg2lLF+RudXdCl3Bn23e9e4kz8Fd0baPrLhg7eBKnbaJ19slJfMGx9sZAqAz0PmV\nchlVxsFCOPtS8NDlwodqjb/OeM5y9fp2W6zXHTae8z6iz0N7pAlYSVME26jHuTL+\nV1htx7lnT1gTQzghpNnAbr1pTjYtm2ASYUO7RjFOFcLb35+bHRYTFIzOoqNlUg7J\n3aRhGFCC5CbjI4G6FfoPTv+fqmslOtAfYpz/YfAJO1rarfclyMC0vfyOZkFSZbra\nDGngGrnWqXgMDxeCxjYa43PwiyaS1DvTX5x3aX6z4QKBgQD/MErqmeobDsNy2nnL\nwp+JmURcNFNxEl2MJeB+3pb+1WAOzYw2l4DXKg/74Ku8GH8uZGFAy8bXPf7kCy/k\nvwontFteCgzG3LoUFBvo3yGT6Sv0cSnXMYHuPUxQLSFE9H/OHYWLx34JOjrtwbmb\nbIFbS6E3enqvV8xyfwSbwkuNMQKBgQD5eV1E6DAws4urVFdMVymIj0JVg/RQEgA/\nH3g5PwVesFhl4HI0LbS1qESY25Ozp+RSEzUr/v6HwMQk1XN4vODZfje8U3ZqBJIj\n+YIonIg2extn7Q0dvCR4rYrgq3gGry1I4AGXPRA7YSk6PS4tCSWRhOC1/y5lwwCJ\nGXw/YC4obwKBgQDDWjrfoXf/wquIrwtyGsl60qPsWfpOoxqOASj8tnWtG7dvXZcq\n64wsKv0Vewa89ZvW7e0tZ1IO0FziQlYlrMGfZ4hSUys4yRyB5mr/OGFCE8wcUs0O\n+c1XjgFvlzzSxsFYDm1/dfZcJgGapSTrgIL+WsVN7SsiM/pE5Euo2XJw4QKBgFbf\n4pDqYk2zWIHzPutAtx/s82agKuXvPtK8fLtCrPYKZt4jSOHOwM05qZmpbUf0wVer\nhKqrg6t2f1dsVWfILmzOvU4BqozExrdsXd0SlYSTXjnUnOqr5+92T5RpYcTCH/zu\ntN8bzpk+/oJfZ8MbGlAQe8gk8t1RCNC1ZUUUkz5VAoGAG7+HdhMglv+Y/vev3BhB\nZ9JNIxA0kezncxX27NCdQKmYR7VRo0pppqRkmmFAPcY3WrpRKs82AosThpCIYvVF\nNRp9TAJm1QHcLPbaDoPzFcELSdNJQYysznNxU1xLSZFlcSvOD0uguioKf8yfFCy4\n4Z/xaoZG8YrCpWknT17XTP0=\n-----END PRIVATE KEY-----\n",
+    "client_email": "lochac@lochackathon.iam.gserviceaccount.com",
+    "client_id": "106507866500811374826",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lochac%40lochackathon.iam.gserviceaccount.com"
+  }

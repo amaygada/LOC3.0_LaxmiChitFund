@@ -10,7 +10,7 @@ class Test extends React.Component{
     
     dabaao = async () => {
         try{
-            const response = await get_city_attr("Australia")
+            const response = await get_cities_attr("Australia")
             console.log(response.data["suggestions"][1]["entities"])//use "web" for web compatible images
         }catch(e){
             console.log(e);

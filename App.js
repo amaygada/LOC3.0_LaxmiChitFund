@@ -19,6 +19,8 @@ import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
 import CityList from './src/Screens/PlanNew/CityList';
 import Map from './src/map_test'
+import Landmarks from './src/Screens/PlanNew/landmark_list'
+import Extra from './src/Screens/PlanNew/extra_deets'
 
 const Stack = createStackNavigator();
 
@@ -37,7 +39,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Map">
+                initialRouteName="Test">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
@@ -46,6 +48,8 @@ export default class App extends React.Component {
                 <Stack.Screen name="Opt" component={Options} />
                 <Stack.Screen name="City List" component={CityList}/>
                 <Stack.Screen name="Map" component={Map}/>
+                <Stack.Screen name="Landmark" component={Landmarks}/>
+                <Stack.Screen name="Extra" component={Extra}/>
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

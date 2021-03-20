@@ -33,7 +33,7 @@ export default class App extends React.Component{
         <Provider store={Store}>
           <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-              <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="Test">
+              <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="Opt">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup}/>
                 <Stack.Screen name="Test" component={Test}/>

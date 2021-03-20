@@ -8,7 +8,7 @@ export const UPDATE_USER_DEETS = 'EXPORT_USER_DEETS'
 export const CHANGE_SIGN_STATUS = 'CHANGE_SIGN_STATUS'
 export const USER_SIGNIN_INFO_STORE = 'USER_SIGNIN_INFO_STORE'
 export const SIGN_IN_USER_UPDATE = 'SIGN_IN_USER_UPDATE'
-export const UPDATE_API_TOKEN = 'UPDATE_API_TOKEN'
+export const ADD_LAT_LONG = 'ADD_LAT_LONG'
 
 //action creators
 export const sign_in_user_update = update => ({
@@ -38,6 +38,11 @@ export const update_user_deets = update => ({
 
 export const user_signin_info_store = update => ({
     type : USER_SIGNIN_INFO_STORE,
+    payload : update
+})
+
+export const add_lat_long = update => ({
+    type : ADD_LAT_LONG,
     payload : update
 })
 

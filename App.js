@@ -23,6 +23,9 @@ import Landmarks from './src/Screens/PlanNew/landmark_list';
 import Extra from './src/Screens/PlanNew/extra_deets';
 import IndivisualCity from './src/Screens/PlanNew/IndivisualCity';
 import Hotels from './src/Screens/PlanNew/hotel_list';
+import IndivisualLandmark from './src/Screens/PlanNew/IndivisualLandmark.js';
+import Navigate from './src/Screens/navigate.js';
+import Loader from './src/components/loader.js';
 
 const Stack = createStackNavigator();
 
@@ -41,9 +44,12 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Hotel">
+                initialRouteName="Nav">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
+                <Stack.Screen name="Nav" component={Navigate} />
+                <Stack.Screen name="Loading" component={Loader} />
+
                 <Stack.Screen name="Test" component={Test} />
                 <Stack.Screen name="Select Country" component={chooseCountry} />
                 <Stack.Screen name="Chat" component={Chat} />
@@ -56,6 +62,11 @@ export default class App extends React.Component {
                   name="Indivisual City"
                   component={IndivisualCity}
                 />
+                <Stack.Screen
+                  name="Indivisual Landmark"
+                  component={IndivisualLandmark}
+                />
+
                 <Stack.Screen name="Hotel" component={Hotels} />
               </Stack.Navigator>
             </NavigationContainer>

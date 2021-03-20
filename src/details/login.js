@@ -17,7 +17,11 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {connect} from 'react-redux';
-import {change_log_status, loginUser , add_lat_long} from './../redux/actions.js';
+import {
+  change_log_status,
+  loginUser,
+  add_lat_long,
+} from './../redux/actions.js';
 import CurvedHeader from './../components/curved_header.js';
 import Geolocation from '@react-native-community/geolocation';
 
@@ -37,7 +41,7 @@ class Login extends React.Component {
       position => {
         let long = position.coords.longitude.toString();
         let lat = position.coords.latitude.toString();
-        this.props.add_lat_long({"lat" : lat , "long" : long})
+        this.props.add_lat_long({lat: lat, long: long});
       },
       error => Alert.alert(error.message),
       {enableHighAccuracy: false, timeout: 20000},
@@ -195,7 +199,9 @@ const msp = state => ({
   log: state.log,
 });
 
-export default connect(msp, {change_log_status, loginUser , add_lat_long})(Login);
+export default connect(msp, {change_log_status, loginUser, add_lat_long})(
+  Login,
+);
 
 const styles = StyleSheet.create({
   input: {

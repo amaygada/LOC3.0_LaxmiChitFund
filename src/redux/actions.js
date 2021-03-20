@@ -9,8 +9,18 @@ export const CHANGE_SIGN_STATUS = 'CHANGE_SIGN_STATUS'
 export const USER_SIGNIN_INFO_STORE = 'USER_SIGNIN_INFO_STORE'
 export const SIGN_IN_USER_UPDATE = 'SIGN_IN_USER_UPDATE'
 export const ADD_LAT_LONG = 'ADD_LAT_LONG'
+export const ADD_CITIES_TO_NEW = 'ADD_CITIES_TO_NEW'
+export const ADD_TOURIST_ATTR_TO_NEW = 'ADD_TOURIST_ATTR_TO_NEW'
+export const ADD_COUNTRY_TO_NEW = 'ADD_COUNTRY_TO_NEW'
+export const ADD_HOTELS_TO_NEW = 'ADD_HOTELS_TO_NEW'
+export const ADD_TRAVEL_TO_NEW = 'ADD_TRAVEL_TO_NEW'
 
 //action creators
+export const add_cities_to_new = update => ({
+    type : ADD_CITIES_TO_NEW,
+    payload: update
+})
+
 export const sign_in_user_update = update => ({
     type : SIGN_IN_USER_UPDATE,
     payload : update

@@ -27,7 +27,7 @@ export const signup = async (obj) => {
     return response
 }
 
-export const get_cities = async (city) => {
+export const get_cities_attr = async (city) => {
     var config = {
         method: 'get',
         url: 'https://hotels4.p.rapidapi.com/locations/search?query=' + city + '&locale=en_US',
@@ -38,5 +38,11 @@ export const get_cities = async (city) => {
       };
 
     let response = await axios(config)
+    return response
+}
+
+export const get_image_city = async (city) => {
+    let url = "https://api.teleport.org/api/urban_areas/slug:" + city + "/images/"
+    let response = await axios.get(url)
     return response
 }

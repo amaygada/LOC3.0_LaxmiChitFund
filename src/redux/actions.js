@@ -21,6 +21,26 @@ export const add_cities_to_new = update => ({
     payload: update
 })
 
+export const add_tourist_attr_to_now = update => ({
+    type : ADD_TOURIST_ATTR_TO_NEW,
+    payload: update
+})
+
+export const add_country_to_new = update => ({
+    type : ADD_COUNTRY_TO_NEW,
+    payload: update
+})
+
+export const add_hotels_to_new = update => ({
+    type : ADD_HOTELS_TO_NEW,
+    payload: update
+})
+
+export const add_travel_to_new = update => ({
+    type : ADD_TRAVEL_TO_NEW,
+    payload: update
+})
+
 export const sign_in_user_update = update => ({
     type : SIGN_IN_USER_UPDATE,
     payload : update

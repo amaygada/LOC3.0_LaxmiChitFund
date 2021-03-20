@@ -51,7 +51,7 @@ class chooseCountry extends Component {
 
   get_country = async () => {
     await this.props.add_country_to_new(this.state.country);
-    this.props.navigation.navigate('City List')
+    this.props.navigation.navigate('Extra')
   }
 
   render() {

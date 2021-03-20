@@ -2,7 +2,7 @@ import React from 'react'
 import {Text , View , Image} from'react-native'
 import {Button} from 'react-native-paper'
 import {login , signup , get_cities_attr , get_image_city} from './api/api.js'
-import {clear_user_data , change_log_status} from './redux/actions.js'
+import {clear_user_data , change_log_status , clear_new} from './redux/actions.js'
 import {connect} from 'react-redux'
 import Store from './redux/store.js'
 
@@ -20,6 +20,7 @@ class Test extends React.Component{
     logout = () => {
         this.props.clear_user_data({})
         this.props.change_log_status(false)
+        this.props.clear_new({})
         this.props.navigation.navigate('Login')
     }
 
@@ -35,4 +36,4 @@ class Test extends React.Component{
     }
 }
 
-export default connect(null , {clear_user_data , change_log_status})(Test)
+export default connect(null , {clear_user_data , change_log_status , clear_new})(Test)

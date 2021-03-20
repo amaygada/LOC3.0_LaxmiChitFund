@@ -14,8 +14,14 @@ export const ADD_TOURIST_ATTR_TO_NEW = 'ADD_TOURIST_ATTR_TO_NEW'
 export const ADD_COUNTRY_TO_NEW = 'ADD_COUNTRY_TO_NEW'
 export const ADD_HOTELS_TO_NEW = 'ADD_HOTELS_TO_NEW'
 export const ADD_TRAVEL_TO_NEW = 'ADD_TRAVEL_TO_NEW'
+export const CLEAR_NEW = 'CLEAR_NEW'
 
 //action creators
+export const clear_new = update => ({
+    type : CLEAR_NEW,
+    payload : update
+})
+
 export const add_cities_to_new = update => ({
     type : ADD_CITIES_TO_NEW,
     payload: update

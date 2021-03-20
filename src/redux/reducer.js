@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import {ADD_TRAVEL_TO_NEW, ADD_HOTELS_TO_NEW,ADD_COUNTRY_TO_NEW,ADD_TOURIST_ATTR_TO_NEW,ADD_CITIES_TO_NEW, CLEAR_USER_DATA , ADD_LAT_LONG, UPDATE_USER_DEETS , USER_SIGNIN_INFO_STORE , SIGN_IN_USER_UPDATE , CHANGE_LOG_STATUS , CHANGE_SIGN_STATUS} from './actions.js'
+import {ADD_TRAVEL_TO_NEW,CLEAR_NEW, ADD_HOTELS_TO_NEW,ADD_COUNTRY_TO_NEW,ADD_TOURIST_ATTR_TO_NEW,ADD_CITIES_TO_NEW, CLEAR_USER_DATA , ADD_LAT_LONG, UPDATE_USER_DEETS , USER_SIGNIN_INFO_STORE , SIGN_IN_USER_UPDATE , CHANGE_LOG_STATUS , CHANGE_SIGN_STATUS} from './actions.js'
 
 const merge = (prev,next) => Object.assign({},prev,next)
 
@@ -50,6 +50,8 @@ const newReducer = (state={} , action) => {
             return merge(state , {country : action.payload})
         case ADD_TRAVEL_TO_NEW:
             return merge(state , {country : action.payload})
+        case CLEAR_NEW:
+            return ({})
         default : 
             return state 
     }

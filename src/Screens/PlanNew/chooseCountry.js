@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {Button, Searchbar, TextInput , ActivityIndicator} from 'react-native-paper';
 import CurvedHeader from '../../components/curved_header';
 import {get_cities_attr , get_image_city} from './../../api/api'
-import {add_cities_to_new} from './../../redux/actions'
+import {add_country_to_new} from './../../redux/actions'
 import Autocomplete from 'react-native-autocomplete-input';
 import {
   widthPercentageToDP as wp,
@@ -49,39 +49,9 @@ class chooseCountry extends Component {
     country: '',
   };
 
-  get_cities_and_attr = async () => {
-    try{
-      let ll = []
-      const response = await get_cities_attr("Australia")
-      console.log(response["data"]["suggestions"][0]["entities"])
-      let extracted = response["data"]["suggestions"][0]["entities"]
-      for(let i of extracted){
-        if(i.type==="CITY"){
-          let im = ""
-          try{
-            const response = await get_image_city(i.name.toLowerCase())
-            im = response["data"]["photos"][0]["image"]["mobile"] //use "web" for web compatible images
-          }catch(e){
-            im = "None"
-            console.log(e);
-          }
-          let o = {
-            "name" : i.name ,
-            "lat" : i.latitude,
-            "long" : i.longitude,
-            "image_uri" : im,
-            "destinationId" : i.destinationId,
-            "caption" : i.caption 
-          }
-          ll.push(o)
-        }
-      }
-      console.log(ll) //this is the list with all deets
-      await this.props.add_cities_to_new(ll) // this is redux part
-      this.props.navigation.navigate('Test')
-    }catch(e){
-        console.log(e);
-    }
+  get_country = async () => {
+    await this.props.add_country_to_new(this.state.country);
+    this.props.navigation.navigate('City List')
   }
 
   render() {
@@ -108,7 +78,7 @@ class chooseCountry extends Component {
         <Button
           style={styles.button}
           mode="contained"
-          onPress={this.get_cities_and_attr}>
+          onPress={this.get_country}>
           Next
         </Button>
       </View>
@@ -120,7 +90,7 @@ const msp = state => ({
   new_ : state.new
 })
 
-export default connect(msp , {add_cities_to_new})(chooseCountry)
+export default connect(msp , {add_country_to_new})(chooseCountry)
 
 const styles = StyleSheet.create({
   autocompleteContainer: {

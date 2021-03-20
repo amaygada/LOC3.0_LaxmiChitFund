@@ -1,19 +1,15 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import AnimatedLoader from 'react-native-animated-loader';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default class Loader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {visible: false};
-  }
-
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({
-        visible: !this.state.visible,
-      });
-    }, 2000);
+    this.state = {visible: true};
   }
 
   render() {
@@ -25,7 +21,7 @@ export default class Loader extends React.Component {
         source={require('./loader.json')}
         animationStyle={styles.lottie}
         speed={1}>
-        <Text>Doing something...</Text>
+        <Text>Working on it...</Text>
       </AnimatedLoader>
     );
   }
@@ -33,7 +29,7 @@ export default class Loader extends React.Component {
 
 const styles = StyleSheet.create({
   lottie: {
-    width: 100,
-    height: 100,
+    width: wp('100%'),
+    height: wp('100%'),
   },
 });

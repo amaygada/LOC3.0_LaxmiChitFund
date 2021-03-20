@@ -53,8 +53,10 @@ export default class Map_test extends React.Component {
   };
 
   go_to_hotel = () => {
-    this.props.navigation.navigate('Hotel' , {did : this.props.route.params.obj.destinationId})
-  }
+    this.props.navigation.navigate('Hotel', {
+      did: this.props.route.params.obj.destinationId,
+    });
+  };
 
   render() {
     let obj = this.props.route.params.obj;

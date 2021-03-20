@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card} from 'react-native-paper';
+import {FAB} from 'react-native-paper';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {
@@ -53,6 +53,12 @@ const colors = {
 };
 
 const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
   card: {
     width: wp('90%'),
     height: hp('25%'),

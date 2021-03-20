@@ -16,13 +16,17 @@ export default class CityComponent extends Component {
   render() {
     return (
       <Card style={styles.card}>
-        <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+        {this.props.image === 'None' ? (
+          <Card.Cover source={require('../images/default_city.jpg')} />
+        ) : (
+          <Card.Cover source={{uri: this.props.image}} />
+        )}
         <Card.Content>
           <Title>{this.props.city}</Title>
           <Paragraph>{this.props.caption}</Paragraph>
         </Card.Content>
         <Card.Actions>
-          <Button>Get details</Button>
+          <Button>Get Details</Button>
         </Card.Actions>
       </Card>
     );

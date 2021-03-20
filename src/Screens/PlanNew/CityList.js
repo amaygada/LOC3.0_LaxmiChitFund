@@ -8,15 +8,15 @@ import {
   View,
   RefreshControl,
 } from 'react-native';
-import {ActivityIndicator} from 'react-native-paper'
+import {ActivityIndicator} from 'react-native-paper';
 import CityComponent from '../../components/CityComponent';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {connect} from 'react-redux';
-import {add_cities_to_new} from './../../redux/actions'
-import {get_cities_attr , get_image_city} from './../../api/api'
+import {add_cities_to_new} from './../../redux/actions';
+import {get_cities_attr, get_image_city} from './../../api/api';
 
 const HEADER_MAX_HEIGHT = hp('45%');
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : hp('15%');
@@ -37,42 +37,42 @@ class App extends Component {
   }
 
   get_cities_and_attr = async () => {
-    try{
-      let ll = []
-      const response = await get_cities_attr(this.props._new.country)
-      console.log(response["data"]["suggestions"][0]["entities"])
-      let extracted = response["data"]["suggestions"][0]["entities"]
-      for(let i of extracted){
-        if(i.type==="CITY"){
-          let im = ""
-          try{
-            const response = await get_image_city(i.name.toLowerCase())
-            im = response["data"]["photos"][0]["image"]["mobile"] //use "web" for web compatible images
-          }catch(e){
-            im = "None"
+    try {
+      let ll = [];
+      const response = await get_cities_attr(this.props._new.country);
+      console.log(response['data']['suggestions'][0]['entities']);
+      let extracted = response['data']['suggestions'][0]['entities'];
+      for (let i of extracted) {
+        if (i.type === 'CITY') {
+          let im = '';
+          try {
+            const response = await get_image_city(i.name.toLowerCase());
+            im = response['data']['photos'][0]['image']['mobile']; //use "web" for web compatible images
+          } catch (e) {
+            im = 'None';
             console.log(e);
           }
           let o = {
-            "name" : i.name ,
-            "lat" : i.latitude,
-            "long" : i.longitude,
-            "image_uri" : im,
-            "destinationId" : i.destinationId,
-            "caption" : i.caption 
-          }
-          ll.push(o)
+            name: i.name,
+            lat: i.latitude,
+            long: i.longitude,
+            image_uri: im,
+            destinationId: i.destinationId,
+            caption: i.caption.replace(/(<([^>]+)>)/gi, ''),
+          };
+          ll.push(o);
         }
       }
-      console.log(ll) //this is the list with all deets
-      await this.props.add_cities_to_new(ll) // this is redux part
-    }catch(e){
-        console.log(e);
+      console.log(ll); //this is the list with all deets
+      await this.props.add_cities_to_new(ll); // this is redux part
+    } catch (e) {
+      console.log(e);
     }
-  }
+  };
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
-      this.get_cities_and_attr()
+      this.get_cities_and_attr();
     });
   }
 
@@ -81,7 +81,9 @@ class App extends Component {
   }
 
   _renderScrollViewContent() {
-    const data = [
+    const data = this.props._new.cities;
+    console.log(data);
+    const data2 = [
       {
         geoId: '3341',
         destinationId: '26633',
@@ -107,13 +109,16 @@ class App extends Component {
     ];
 
     return (
-        <View style={styles.scrollViewContent}>
-          {data.map((_, i) => (
-            <CityComponent city={_.name} caption={_.caption} />
-          ))}
-        </View>
-      );
-    
+      <View style={styles.scrollViewContent}>
+        {data.map((_, i) => (
+          <CityComponent
+            city={_.name}
+            caption={_.caption}
+            image={_.image_uri}
+          />
+        ))}
+      </View>
+    );
   }
 
   render() {
@@ -151,7 +156,7 @@ class App extends Component {
       extrapolate: 'clamp',
     });
 
-    if(typeof(this.props._new.cities) !== 'undefined'){
+    if (typeof this.props._new.cities !== 'undefined') {
       return (
         <View style={styles.fill}>
           <StatusBar
@@ -188,7 +193,10 @@ class App extends Component {
           </Animated.ScrollView>
           <Animated.View
             pointerEvents="none"
-            style={[styles.header, {transform: [{translateY: headerTranslate}]}]}>
+            style={[
+              styles.header,
+              {transform: [{translateY: headerTranslate}]},
+            ]}>
             <Animated.Image
               style={[
                 styles.backgroundImage,
@@ -211,14 +219,30 @@ class App extends Component {
           </Animated.View>
         </View>
       );
-    }else{
-      return(
-        <View style={{flex:1 , justifyContent : 'center' , alignContent : 'center' , alignItems : 'center'}}>
-            <View style={{justifyContent : 'center' , alignContent : 'center' , alignItems : 'center'}}>
-                <ActivityIndicator style={{alignSelf : 'center'}} animating={typeof(this.props._new.cities) === 'undefined'} color="#1e5f74" size="small" />
-            </View>
+    } else {
+      return (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignContent: 'center',
+              alignItems: 'center',
+            }}>
+            <ActivityIndicator
+              style={{alignSelf: 'center'}}
+              animating={typeof this.props._new.cities === 'undefined'}
+              color="#1e5f74"
+              size="small"
+            />
+          </View>
         </View>
-      )
+      );
     }
   }
 }

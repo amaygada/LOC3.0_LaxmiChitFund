@@ -80,42 +80,19 @@ class App extends Component {
     this._unsubscribe();
   }
 
-  callback = () => {
-    this.props.navigation.navigate('Indivisual City');
+  callback = obj => {
+    console.log('callback');
+    this.props.navigation.navigate('Indivisual City', {obj});
   };
 
   _renderScrollViewContent() {
     const data = this.props._new.cities;
-    console.log(data);
-    const data2 = [
-      {
-        geoId: '3341',
-        destinationId: '26633',
-        landmarkCityDestinationId: null,
-        type: 'CITY',
-        redirectPage: 'DEFAULT_PAGE',
-        latitude: -33.86757,
-        longitude: 151.20844,
-        caption: 'Sydney, New South Wales, Australia',
-        name: 'Sydney',
-      },
-      {
-        geoId: '3342',
-        destinationId: '26623',
-        landmarkCityDestinationId: null,
-        type: 'CITY',
-        redirectPage: 'DEFAULT_PAGE',
-        latitude: -33.86757,
-        longitude: 151.20844,
-        caption: 'Mumbai, Maharashtra, India',
-        name: 'Mumbai',
-      },
-    ];
 
     return (
       <View style={styles.scrollViewContent}>
         {data.map((_, i) => (
           <CityComponent
+            obj={_}
             city={_.name}
             caption={_.caption}
             image={_.image_uri}

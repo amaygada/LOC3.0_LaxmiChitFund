@@ -38,7 +38,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Map">
+                initialRouteName="Test">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
@@ -47,10 +47,9 @@ export default class App extends React.Component {
                 <Stack.Screen name="Opt" component={Options} />
                 <Stack.Screen name="City List" component={CityList} />
                 <Stack.Screen
-                  name="Indiviual City"
+                  name="Indivisual City"
                   component={IndivisualCity}
                 />
-                <Stack.Screen name="City List" component={CityList} />
                 <Stack.Screen name="Map" component={Map} />
               </Stack.Navigator>
             </NavigationContainer>

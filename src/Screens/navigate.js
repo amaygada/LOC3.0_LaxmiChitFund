@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Settings from './Settings';
+import Settings from './settings';
 import Options from './options';
 
 const Tab = createBottomTabNavigator();

@@ -22,6 +22,8 @@ const HEADER_MAX_HEIGHT = hp('45%');
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : hp('15%');
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
+let price_list = [4999 , 5499 , 10999 , 9999 , 29999 , 3499 , 12999 , 6999]
+
 class Hotel extends Component {
   constructor(props) {
     super(props);
@@ -54,7 +56,7 @@ class Hotel extends Component {
             "address" : i.address.countryCode + " " + i.address.streetAddress + " " + i.address.locality + " " + i.address.postalCode +" " + i.address.countryName,
             "coordinates" : {"lat" : i.coordinate.lat , "long" : i.coordinate.lon},
             "name" : i.name,
-            "price" : i.price,
+            "price" : price_list[count],
             "star" : i.starRating,
             "id" : i.id,
             "im" : "None" 

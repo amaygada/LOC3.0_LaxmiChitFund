@@ -31,14 +31,14 @@ class Settings extends React.Component{
                     <View style = {{flexDirection : 'row'}}>
                         <TouchableOpacity onPress={() => {}}>
                             <View style = {{width : wp('45%') , height : wp('45%') , justifyContent:'center', alignItems:'center' , marginHorizontal:wp("2.5%") , borderRadius : 10 ,marginTop: wp('5%'), backgroundColor : "#D4CAA3" , elevation:20}}>
-                                <Icon name={'cart'} color='#bb8082' size={50} />
-                                <Text style={{color : "#000" , fontSize : 20}}>My Orders</Text>
+                                <Icon name={'ambulance'} color='#bb8082' size={50} />
+                                <Text style={{color : "#000" , fontSize : 20}}>Emergency</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>{}}>
                             <View style = {{width : wp('45%') , justifyContent:'center', alignItems:'center' , height : wp('45%') , marginHorizontal:wp("2.5%") , borderRadius : 10 ,marginTop: wp('5%'), backgroundColor : "#bb8082" , elevation:20}}>
-                                <Icon name={'account-multiple'} color='#D4CAA3' size={50} />
-                                <Text style={{color : "#fff" , fontSize : 20}}>Update Details</Text>
+                                <Icon name={'home-city'} color='#D4CAA3' size={50} />
+                                <Text style={{color : "#fff" , fontSize : 20}}>Home</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

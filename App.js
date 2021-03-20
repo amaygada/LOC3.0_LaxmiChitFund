@@ -27,6 +27,8 @@ import Settings from './src/Screens/settings'
 import IndivisualLandmark from './src/Screens/PlanNew/IndivisualLandmark.js';
 import Navigate from './src/Screens/navigate.js';
 import Loader from './src/components/loader.js';
+import Expense from './src/Screens/expense'
+import AddExpense from './src/Screens/add_expense'
 
 const Stack = createStackNavigator();
 
@@ -43,14 +45,12 @@ export default class App extends React.Component {
         <Provider store={Store}>
           <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-              <Stack.Navigator
-                screenOptions={{headerShown: false}}
-                initialRouteName="Nav">
+              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Expense">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Nav" component={Navigate} />
                 <Stack.Screen name="Loading" component={Loader} />
-
+                <Stack.Screen name="Add Expense" component={AddExpense} />
                 <Stack.Screen name="Test" component={Test} />
                 <Stack.Screen name="Select Country" component={chooseCountry} />
                 <Stack.Screen name="Chat" component={Chat} />
@@ -66,6 +66,7 @@ export default class App extends React.Component {
                   name="Indivisual Landmark"
                   component={IndivisualLandmark}
                 />
+                <Stack.Screen name="Expense" component={Expense}/>
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

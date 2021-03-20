@@ -17,8 +17,26 @@ export const ADD_HOTELS_TO_NEW = 'ADD_HOTELS_TO_NEW'
 export const ADD_TRAVEL_TO_NEW = 'ADD_TRAVEL_TO_NEW'
 export const CLEAR_NEW = 'CLEAR_NEW'
 export const ADD_USER_DEETS_TO_NEW = 'ADD_USER_DEETS_TO_NEW'
+export const ADD_EXPENSE = 'ADD_EXPENSE'
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE'
+export const SET_EXPENSE = 'SET_EXPENSE'
 
 //action creators
+export const set_expense = update => ({
+    type : SET_EXPENSE,
+    payload : update
+})
+
+export const add_expense = update => ({
+    type : ADD_EXPENSE,
+    payload : update
+})
+
+export const remove_expense = update => ({
+    type : REMOVE_EXPENSE,
+    payload : update
+})
+
 export const add_user_deets_to_new = update => ({
     type : ADD_USER_DEETS_TO_NEW,
     payload : update

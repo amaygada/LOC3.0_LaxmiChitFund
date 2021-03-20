@@ -52,6 +52,7 @@ class Hotel extends Component {
       let extracted = response.data.data.body["searchResults"].results;
       let count = 0
       for (let i of extracted) {
+        console.log(typeof(i.coordinate.lon))
           let o = {
             "address" : i.address.countryCode + " " + i.address.streetAddress + " " + i.address.locality + " " + i.address.postalCode +" " + i.address.countryName,
             "coordinates" : {"lat" : i.coordinate.lat , "long" : i.coordinate.lon},

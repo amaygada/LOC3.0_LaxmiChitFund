@@ -179,7 +179,7 @@ class Login extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.user.user_info) {
-      nextProps.navigation.navigate('Opt');
+      nextProps.navigation.navigate('Nav');
     }
     return null;
   }

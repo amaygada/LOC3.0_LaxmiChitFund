@@ -1,5 +1,6 @@
+import { ActionSheetIOS } from 'react-native'
 import {combineReducers} from 'redux'
-import {ADD_TRAVEL_TO_NEW,CLEAR_NEW, ADD_USER_DEETS_TO_NEW, ADD_HOTELS_TO_NEW,ADD_COUNTRY_TO_NEW,ADD_TOURIST_ATTR_TO_NEW,ADD_CITIES_TO_NEW, CLEAR_USER_DATA , ADD_LAT_LONG, UPDATE_USER_DEETS , USER_SIGNIN_INFO_STORE , SIGN_IN_USER_UPDATE , CHANGE_LOG_STATUS , CHANGE_SIGN_STATUS} from './actions.js'
+import {ADD_TRAVEL_TO_NEW,CLEAR_NEW,ADD_EXPENSE ,SET_EXPENSE, REMOVE_EXPENSE, ADD_USER_DEETS_TO_NEW, ADD_HOTELS_TO_NEW,ADD_COUNTRY_TO_NEW,ADD_TOURIST_ATTR_TO_NEW,ADD_CITIES_TO_NEW, CLEAR_USER_DATA , ADD_LAT_LONG, UPDATE_USER_DEETS , USER_SIGNIN_INFO_STORE , SIGN_IN_USER_UPDATE , CHANGE_LOG_STATUS , CHANGE_SIGN_STATUS} from './actions.js'
 
 const merge = (prev,next) => Object.assign({},prev,next)
 
@@ -73,13 +74,32 @@ const pastReducer = (state={} , action) => {
     }
 }
 
+const expenseReducer = (state = [] , action) => {
+    switch(action.type){
+        case ADD_EXPENSE:{
+            let arr = []
+            arr = state
+            console.log(arr)
+            arr.push(action.payload)
+            return(arr)
+        }
+        case SET_EXPENSE:
+            return([])
+        case REMOVE_EXPENSE:
+            return action.payload
+        default : 
+            return state
+    }
+}
+
 const reducer = combineReducers({
     user : userReducer,
     log : logReducer,
     sign : signReducer,
     new : newReducer,
     present : presentReducer,
-    past : pastReducer
+    past : pastReducer,
+    expense : expenseReducer
 })
 
 export default reducer

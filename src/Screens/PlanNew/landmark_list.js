@@ -8,7 +8,7 @@ import {
   View,
   RefreshControl,
 } from 'react-native';
-import {ActivityIndicator} from 'react-native-paper';
+import {FAB} from 'react-native-paper';
 import CityComponent from '../../components/CityComponent';
 import {
   widthPercentageToDP as wp,
@@ -17,6 +17,7 @@ import {
 import {connect} from 'react-redux';
 import {add_tourist_attr_to_new} from './../../redux/actions';
 import {get_cities_attr, get_image_city} from './../../api/api';
+import Loader from '../../components/loader';
 
 const HEADER_MAX_HEIGHT = hp('45%');
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : hp('15%');
@@ -191,6 +192,13 @@ class Attractions extends Component {
             ]}>
             <Text style={styles.title}>Landmarks</Text>
           </Animated.View>
+          <FAB
+            style={styles.fab}
+            small={true}
+            color="red"
+            icon="message-text-outline"
+            onPress={() => console.log('Pressed')}
+          />
         </View>
       );
     } else {
@@ -204,16 +212,12 @@ class Attractions extends Component {
           }}>
           <View
             style={{
+              flex: 1,
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
             }}>
-            <ActivityIndicator
-              style={{alignSelf: 'center'}}
-              animating={typeof this.props._new.tour === 'undefined'}
-              color="#1e5f74"
-              size="small"
-            />
+            <Loader />
           </View>
         </View>
       );
@@ -226,6 +230,13 @@ const msp = state => ({
 export default connect(msp, {add_tourist_attr_to_new})(Attractions);
 
 const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'red',
+  },
   fill: {
     flex: 1,
   },

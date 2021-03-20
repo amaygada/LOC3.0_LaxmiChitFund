@@ -8,7 +8,7 @@ import {
   View,
   RefreshControl,
 } from 'react-native';
-import {ActivityIndicator} from 'react-native-paper';
+import {FAB} from 'react-native-paper';
 import CityComponent from '../../components/CityComponent';
 import {
   widthPercentageToDP as wp,
@@ -17,6 +17,7 @@ import {
 import {connect} from 'react-redux';
 import {add_cities_to_new} from './../../redux/actions';
 import {get_cities_attr, get_image_city} from './../../api/api';
+import Loader from '../../components/loader';
 
 const HEADER_MAX_HEIGHT = hp('45%');
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : hp('15%');
@@ -199,6 +200,12 @@ class App extends Component {
             ]}>
             <Text style={styles.title}>Cities</Text>
           </Animated.View>
+          <FAB
+            style={styles.fab}
+            small={false}
+            icon="message-text-outline"
+            onPress={() => console.log('Pressed')}
+          />
         </View>
       );
     } else {
@@ -210,19 +217,7 @@ class App extends Component {
             alignContent: 'center',
             alignItems: 'center',
           }}>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignContent: 'center',
-              alignItems: 'center',
-            }}>
-            <ActivityIndicator
-              style={{alignSelf: 'center'}}
-              animating={typeof this.props._new.cities === 'undefined'}
-              color="#1e5f74"
-              size="small"
-            />
-          </View>
+          <Loader />
         </View>
       );
     }
@@ -234,6 +229,12 @@ const msp = state => ({
 export default connect(msp, {add_cities_to_new})(App);
 
 const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
   fill: {
     flex: 1,
   },

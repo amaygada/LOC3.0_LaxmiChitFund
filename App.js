@@ -22,11 +22,12 @@ import Map from './src/map_test';
 import Landmarks from './src/Screens/PlanNew/landmark_list';
 import Extra from './src/Screens/PlanNew/extra_deets';
 import IndivisualCity from './src/Screens/PlanNew/IndivisualCity';
-import Hotels from './src/Screens/PlanNew/hotel_list'
-import Settings from './src/Screens/settings'
+import Hotels from './src/Screens/PlanNew/hotel_list';
+import Settings from './src/Screens/settings';
 import IndivisualLandmark from './src/Screens/PlanNew/IndivisualLandmark.js';
 import Navigate from './src/Screens/navigate.js';
 import Loader from './src/components/loader.js';
+import IndivisualHotel from './src/Screens/PlanNew/IndivisualHotel';
 
 const Stack = createStackNavigator();
 
@@ -45,7 +46,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Nav">
+                initialRouteName="Test">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Nav" component={Navigate} />
@@ -55,16 +56,23 @@ export default class App extends React.Component {
                 <Stack.Screen name="Select Country" component={chooseCountry} />
                 <Stack.Screen name="Chat" component={Chat} />
                 <Stack.Screen name="Opt" component={Options} />
-                <Stack.Screen name="City List" component={CityList}/>
-                <Stack.Screen name="Map" component={Map}/>
-                <Stack.Screen name="Landmark" component={Landmarks}/>
-                <Stack.Screen name="Extra" component={Extra}/>
-                <Stack.Screen name="Indivisual City" component={IndivisualCity}/>
-                <Stack.Screen name="Hotel" component={Hotels}/>
-                <Stack.Screen name="Settings" component={Settings}/>
+                <Stack.Screen name="City List" component={CityList} />
+                <Stack.Screen name="Map" component={Map} />
+                <Stack.Screen name="Landmark" component={Landmarks} />
+                <Stack.Screen name="Extra" component={Extra} />
+                <Stack.Screen
+                  name="Indivisual City"
+                  component={IndivisualCity}
+                />
+                <Stack.Screen name="Hotel" component={Hotels} />
+                <Stack.Screen name="Settings" component={Settings} />
                 <Stack.Screen
                   name="Indivisual Landmark"
                   component={IndivisualLandmark}
+                />
+                <Stack.Screen
+                  name="Indivisual Hotel"
+                  component={IndivisualHotel}
                 />
               </Stack.Navigator>
             </NavigationContainer>

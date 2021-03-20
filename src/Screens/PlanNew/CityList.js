@@ -13,12 +13,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {connect} from 'react-redux';
 
 const HEADER_MAX_HEIGHT = hp('45%');
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : hp('15%');
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +29,16 @@ export default class App extends Component {
         Platform.OS === 'ios' ? -HEADER_MAX_HEIGHT : 0,
       ),
       refreshing: false,
+      loading: true,
     };
+  }
+
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {});
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
   }
 
   _renderScrollViewContent() {
@@ -162,6 +172,10 @@ export default class App extends Component {
     );
   }
 }
+const msp = state => ({
+  _new: state.new,
+});
+export default connect(msp, {})(App);
 
 const styles = StyleSheet.create({
   fill: {

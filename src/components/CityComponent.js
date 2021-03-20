@@ -26,7 +26,13 @@ export default class CityComponent extends Component {
           <Paragraph>{this.props.caption}</Paragraph>
         </Card.Content>
         <Card.Actions>
-          <Button>Get Details</Button>
+          <Button
+            onPress={() => {
+              console.log('pressed');
+              this.props.callback(this.props.obj);
+            }}>
+            Get Details
+          </Button>
         </Card.Actions>
       </Card>
     );

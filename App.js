@@ -19,6 +19,8 @@ import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
 import CityList from './src/Screens/PlanNew/CityList';
 import IndivisualCity from './src/Screens/PlanNew/IndivisualCity';
+import Map from './src/map_test';
+
 const Stack = createStackNavigator();
 
 const theme = {
@@ -36,7 +38,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Test">
+                initialRouteName="Map">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
@@ -48,6 +50,8 @@ export default class App extends React.Component {
                   name="Indiviual City"
                   component={IndivisualCity}
                 />
+                <Stack.Screen name="City List" component={CityList} />
+                <Stack.Screen name="Map" component={Map} />
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

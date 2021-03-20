@@ -13,7 +13,7 @@ state = {
     messages: [
       {
         _id: 1,
-        text: 'Hi! I am the Healthbot 🤖.\n\nHow may I help you today?',
+        text: 'Hi! I am the Travel Buddy 🤖.\n\nHow may I help you today?',
         createdAt: new Date(),
         user: BOT_USER
       }

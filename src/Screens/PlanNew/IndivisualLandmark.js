@@ -20,8 +20,8 @@ export default class IndivisualLandmark extends React.Component {
     error: false,
   };
 
-  go_to_landmark = () => {
-    this.props.navigation.navigate('Landmark');
+  go_to_ali = () => {
+    this.props.navigation.navigate('ALI' , {"obj" : this.props.route.params.obj});
   };
 
   render() {
@@ -50,7 +50,7 @@ export default class IndivisualLandmark extends React.Component {
               <Button
                 mode="outlined"
                 style={[styles.button]}
-                onPress={this.go_to_landmark}>
+                onPress={this.go_to_ali}>
                 Add to Itinerary
               </Button>
             </View>

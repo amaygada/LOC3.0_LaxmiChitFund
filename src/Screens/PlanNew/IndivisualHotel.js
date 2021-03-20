@@ -9,6 +9,7 @@ import {Subheading, Title, ActivityIndicator, Button} from 'react-native-paper';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { TouchableHighlightBase } from 'react-native';
 
 export default class IndivisualHotel extends React.Component {
   state = {
@@ -23,6 +24,10 @@ export default class IndivisualHotel extends React.Component {
   go_to_landmark = () => {
     console.log('hotel ' + JSON.stringify(this.props.route.params.obj));
   };
+
+  go_to_ahi = () => {
+    this.props.navigation.navigate('AHI' , {obj : this.props.route.params.obj})
+  }
 
   render() {
     let obj = this.props.route.params.obj;
@@ -62,7 +67,7 @@ export default class IndivisualHotel extends React.Component {
               <Button
                 mode="outlined"
                 style={[styles.button]}
-                onPress={this.go_to_landmark}
+                onPress={this.go_to_ahi}
                 labelStyle={{color: 'white'}}>
                 Add to Itinerary
               </Button>

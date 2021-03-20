@@ -6,6 +6,7 @@ import { heightPercentageToDP as hp , widthPercentageToDP as wp } from 'react-na
 import {connect} from 'react-redux'
 import CurvedHeader from './../components/curved_header'
 import Store from './../redux/store'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 class Expense extends React.Component{
 
@@ -29,7 +30,7 @@ class Expense extends React.Component{
     }
 
     render(){
-        console.log(Store.getState())
+        //console.log(Store.getState())
         return(
             <View style={{flex:1}}>
                 <CurvedHeader title="Track Expense"/>
@@ -74,15 +75,15 @@ class ExpComp extends React.Component{
         return(
             <Card style = {styles.card}>
             <View style={{padding : 10}}>
-            <View style={{flexDirection:'row'}}>
-                <View style={{flex:1}}>
-                    <Text style={styles.date}>{this.props.date}</Text>
-                </View>
-                <Text style={styles.price}>Rs {this.props.amount}</Text>
-            </View>
-            <View>
-                <Text style={styles.reason}>{this.props.reason}</Text>
-            </View>
+                    <View style={{flexDirection:'row'}}>
+                        <View style={{flex:1}}>
+                            <Text style={styles.date}>{this.props.date}</Text>
+                        </View>
+                        <Text style={styles.price}>Rs {this.props.amount}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.reason}>{this.props.reason}</Text>
+                    </View>
             </View>
         </Card>
         )

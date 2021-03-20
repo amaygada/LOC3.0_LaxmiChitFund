@@ -32,8 +32,8 @@ export const get_cities_attr = async (city) => {
         method: 'get',
         url: 'https://hotels4.p.rapidapi.com/locations/search?query=' + city + '&locale=en_US',
         headers: { 
-          'x-rapidapi-key': 'c5d58e6967msh3f4f3f0fbdaa628p13eb8djsn66d180fdca4d', 
-          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+            'x-rapidapi-key': 'e3078ac64amsh7ca33c2f0f6ba25p1cb3c2jsn3201da75e3b0',
+            'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
       };
 
@@ -63,8 +63,8 @@ export const get_hotels = async (did , sdate , edate , num) => {
           sortOrder: 'PRICE'
         },
         headers: {
-          'x-rapidapi-key': 'e3078ac64amsh7ca33c2f0f6ba25p1cb3c2jsn3201da75e3b0',
-          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+            'x-rapidapi-key': 'e3078ac64amsh7ca33c2f0f6ba25p1cb3c2jsn3201da75e3b0',
+            'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
       };
       
@@ -78,8 +78,8 @@ export const get_hotel_photo = async (_id) => {
         url: 'https://hotels4.p.rapidapi.com/properties/get-hotel-photos',
         params: {id: _id},
         headers: {
-          'x-rapidapi-key': 'c5d58e6967msh3f4f3f0fbdaa628p13eb8djsn66d180fdca4d',
-          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+            'x-rapidapi-key': 'e3078ac64amsh7ca33c2f0f6ba25p1cb3c2jsn3201da75e3b0',
+            'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
       };
       

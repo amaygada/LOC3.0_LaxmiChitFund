@@ -188,7 +188,7 @@ class App extends Component {
                   transform: [{translateY: imageTranslate}],
                 },
               ]}
-              source={require('../../images/cityBG.jpg')}
+              source={require('../../images/city_dark.jpg')}
             />
           </Animated.View>
           <Animated.View

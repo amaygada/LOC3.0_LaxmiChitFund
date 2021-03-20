@@ -20,8 +20,14 @@ export const ADD_USER_DEETS_TO_NEW = 'ADD_USER_DEETS_TO_NEW'
 export const ADD_EXPENSE = 'ADD_EXPENSE'
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE'
 export const SET_EXPENSE = 'SET_EXPENSE'
+export const ADD_ITENARY = 'ADD_ITENARY'
 
 //action creators
+export const add_itenary = update => ({
+    type : ADD_ITENARY,
+    payload : update
+}) 
+
 export const set_expense = update => ({
     type : SET_EXPENSE,
     payload : update

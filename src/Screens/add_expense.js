@@ -23,7 +23,7 @@ class AddExpense extends React.Component {
     }
 
     add = () => {
-        if(this.reason === "" && this.amount === ""){alert('Please fill all fields'); return; }
+        if(this.state.reason === ""){alert('Please fill all fields'); return; }
         else{
             let a = this.state.date
             let p = a.getMonth() + 1

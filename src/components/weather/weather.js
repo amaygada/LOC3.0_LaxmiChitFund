@@ -18,12 +18,28 @@ const Weather = ({weather, temperature, city}) => {
           name={weatherConditions[weather].icon}
           color={'#fff'}
         />
-        <Text style={styles.tempText}>{temperature}˚C</Text>
+        <Text
+          style={[
+            styles.tempText,
+            {color: weatherConditions[weather].textColor},
+          ]}>
+          {temperature}˚C
+        </Text>
       </View>
 
       <View style={styles.bodyContainer}>
-        <Text style={styles.subtitle}> It's Currently</Text>
-        <Text style={styles.title}>{weatherConditions[weather].title}</Text>
+        <Text
+          style={[
+            styles.subtitle,
+            {color: weatherConditions[weather].textColor},
+          ]}>
+          {' '}
+          It's Currently
+        </Text>
+        <Text
+          style={[styles.title, {color: weatherConditions[weather].textColor}]}>
+          {weatherConditions[weather].title}
+        </Text>
       </View>
     </View>
   );

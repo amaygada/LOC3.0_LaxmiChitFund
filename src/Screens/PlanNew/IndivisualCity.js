@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Subheading, Title, ActivityIndicator , Button} from 'react-native-paper';
+import {Subheading, Title, ActivityIndicator, Button} from 'react-native-paper';
 import {API_KEY} from '../../components/weather/weatherAPIKey';
 import Weather from '../../components/weather/weather';
 import {weatherConditions} from '../../components/weather/weatherConditions';
@@ -49,8 +49,8 @@ export default class Map_test extends React.Component {
   }
 
   go_to_landmark = () => {
-    this.props.navigation.navigate('Landmark')
-  }
+    this.props.navigation.navigate('Landmark');
+  };
 
   go_to_hotel = () => {
     this.props.navigation.navigate('Hotel' , {did : this.props.route.params.obj.destinationId})
@@ -58,7 +58,7 @@ export default class Map_test extends React.Component {
 
   render() {
     let obj = this.props.route.params.obj;
-    console.log(obj)
+    console.log(obj);
     const {isLoading} = this.state;
     return (
       <View style={styles.page}>
@@ -86,13 +86,39 @@ export default class Map_test extends React.Component {
               city={this.state.city}
             />
             <View style={styles.buttonContainer}>
-        <Button labelStyle={{color : "#fff"}} mode="outlined" style={styles.button} onPress={this.go_to_hotel}>
-          See Hotels
-        </Button>
-        <Button labelStyle={{color : "#fff"}} mode="outlined" style={styles.button} onPress={this.go_to_landmark}>
-          Landmarks
-        </Button>
-      </View>
+              <Button
+                onPress={this.go_to_hotel}
+                labelStyle={{
+                  color:
+                    weatherConditions[this.state.weatherCondition].textColor,
+                }}
+                mode="outlined"
+                style={[
+                  styles.button,
+                  {
+                    borderColor:
+                      weatherConditions[this.state.weatherCondition].textColor,
+                  },
+                ]}>
+                See Hotels
+              </Button>
+              <Button
+                labelStyle={{
+                  color:
+                    weatherConditions[this.state.weatherCondition].textColor,
+                }}
+                mode="outlined"
+                style={[
+                  styles.button,
+                  {
+                    borderColor:
+                      weatherConditions[this.state.weatherCondition].textColor,
+                  },
+                ]}
+                onPress={this.go_to_landmark}>
+                Landmarks
+              </Button>
+            </View>
           </LinearGradient>
         )}
       </View>
@@ -128,7 +154,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     marginHorizontal: wp('10%'),
-    borderColor : "#fff"
   },
   headerContainer: {
     flexDirection: 'row',

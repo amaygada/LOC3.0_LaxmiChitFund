@@ -39,21 +39,21 @@ class Attractions extends Component {
   get_cities_and_attr = async () => {
     try {
       let ll = [];
-      console.log(this.props._new.country)
+      console.log(this.props._new.country);
       const response = await get_cities_attr(this.props._new.country);
       console.log(response['data']['suggestions'][2]['entities']);
       let extracted = response['data']['suggestions'][2]['entities'];
       for (let i of extracted) {
-        let im = "None"
+        let im = 'None';
         let o = {
-            name: i.name,
-            lat: i.latitude,
-            long: i.longitude,
-            image_uri: im,
-            destinationId: i.destinationId,
-            caption: i.caption.replace(/(<([^>]+)>)/gi, ''),
-          };
-        ll.push(o)
+          name: i.name,
+          lat: i.latitude,
+          long: i.longitude,
+          image_uri: im,
+          destinationId: i.destinationId,
+          caption: i.caption.replace(/(<([^>]+)>)/gi, ''),
+        };
+        ll.push(o);
       }
       console.log(ll); //this is the list with all deets
       await this.props.add_tourist_attr_to_new(ll); // this is redux part
@@ -72,6 +72,11 @@ class Attractions extends Component {
     this._unsubscribe();
   }
 
+  callback = obj => {
+    console.log('callback');
+    this.props.navigation.navigate('Indivisual Landmark', {obj});
+  };
+
   _renderScrollViewContent() {
     const data = this.props._new.tour;
 
@@ -79,9 +84,11 @@ class Attractions extends Component {
       <View style={styles.scrollViewContent}>
         {data.map((_, i) => (
           <CityComponent
+            obj={_}
             city={_.name}
             caption={_.caption}
             image={_.image_uri}
+            callback={this.callback}
           />
         ))}
       </View>

@@ -5,6 +5,10 @@ import HomeScreen from './screens/HomeScreen';
 import Dashboard from './screens/Dashboard';
 import PlanScreen from './screens/PlanScreen';
 import CityScreen from './screens/CityScreen';
+import HotelsScreen from './screens/HotelsScreen';
+import LandmarksScreen from './screens/LandmarksScreen';
+import FormScreen from './screens/FormScreen';
+import HotelScreen from './screens/HotelScreen';
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
         <Route component={Dashboard} path="/dashboard" />
         <Route component={PlanScreen} path="/plantrip" />
         <Route component={CityScreen} path="/city" />
+        <Route component={HotelsScreen} path="/hotels" />
+        <Route component={LandmarksScreen} path="/landmarks" />
+        <Route component={FormScreen} path="/planform" />
+        <Route component={HotelScreen} path="/hotel" />
       </Switch>
     </div>
   );

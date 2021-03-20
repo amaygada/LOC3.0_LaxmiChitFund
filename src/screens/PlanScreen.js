@@ -7,10 +7,11 @@ import axios from 'axios';
 import Loader from '../components/Loader';
 
 const initialValues = {
-  search:'',
+  search: localStorage.getItem('country'),
 }
 
 function PlanScreen() {
+  console.log(initialValues);
 
   const [values, setValues] = useState(initialValues);
   const [list, setList] = useState([]);
@@ -20,6 +21,7 @@ function PlanScreen() {
     try{
       setLoading(true);
       let ll = [];
+      console.log(values.search);
       const response = await get_cities_attr(values.search);
       console.log(response["data"]["suggestions"][0]["entities"])
       let extracted = response["data"]["suggestions"][0]["entities"]
@@ -46,12 +48,16 @@ function PlanScreen() {
       }
       setLoading(false);
       setList(ll);
-      await this.props.add_cities_to_new(ll) // this is redux part
-      this.props.navigation.navigate('Test')
     }catch(e){
         console.log(e);
     }
   }
+
+  useEffect(()=>{
+    if(localStorage.getItem('country')){
+      get_cities_and_attr();
+    }
+  },[])
   
   useEffect(()=>{
     console.log(list);
@@ -62,8 +68,8 @@ function PlanScreen() {
         method: 'get',
         url: 'https://hotels4.p.rapidapi.com/locations/search?query=' + city + '&locale=en_US',
         headers: {
-          'x-rapidapi-key': 'c5d58e6967msh3f4f3f0fbdaa628p13eb8djsn66d180fdca4d',
-          'x-rapidapi-host': 'hotels4.p.rapidapi.com'
+          'x-rapidapi-key': 'e3078ac64amsh7ca33c2f0f6ba25p1cb3c2jsn3201da75e3b0',
+    'x-rapidapi-host': 'hotels4.p.rapidapi.com'
         }
       };
   
@@ -119,11 +125,12 @@ function PlanScreen() {
           </div>
         </Row>
         <Row style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-          {list && list.map((element, index)=>{
+          {loading? <div className="mt-2"><Loader height='100px' width='100px' /></div> : list.map((element, index)=>{
             return (
               <Col xs={4} keu={index}>
                 <Card className="my-3 pb-1 rounded text-center" style={{backgroundColor:'rgba(0,0,0,0.8)', color:'orange', cursor:'pointer'}} onClick={()=>{
                   localStorage.setItem('city', JSON.stringify(element));
+                  localStorage.setItem('country', JSON.stringify(values.search));
                   window.location.href=`/city/${element.name}`;
                 }}>
                   <img src={element.image_uri===""?"https://d13k13wj6adfdf.cloudfront.net/urban_areas/perth-1e220f50f9.jpg":element.image_uri} alt=""/>
@@ -133,7 +140,6 @@ function PlanScreen() {
               </Col>
             )
           })}
-          {loading && <div className="mt-2"><Loader height='100px' width='100px' /></div>}
         </Row>
       </Container>
     </div>

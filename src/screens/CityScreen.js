@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react'
 import background from '../images/plantrip.jpeg';
 import styled from 'styled-components';
 import MainNav from '../components/MainNav';
-import { Button, Card, Container, Row, Col, Form } from 'react-bootstrap';
-import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from 'react-leaflet';
+import { Card, Container, Row, Col } from 'react-bootstrap';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Loader from '../components/Loader';
+import hotels from '../images/hotels.jpg';
+import landmarks from '../images/landmarks.jpg';
 
 function CityScreen() {
   const [city, setCity] = useState(null);
@@ -43,7 +45,7 @@ function CityScreen() {
         <Row style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
           <Col xs={9}>
             {loading?<div className="mt-5"><Loader height='100px' width='100px' /></div> :
-            <Card className="pt-0 pb-4" style={{marginTop:'150px', backgroundColor:'rgba(0,0,0,0.8)', display: 'flex', justifyContent:'center', alignItems:'center', color:'orange', borderRadius:'20px'}}>
+            <Card className="pt-0 pb-4 mb-5" style={{marginTop:'60px', backgroundColor:'rgba(0,0,0,0.8)', display: 'flex', justifyContent:'center', alignItems:'center', color:'orange', borderRadius:'20px'}}>
               <span style={{width:'100%'}}>
                 <MapContainer center={[city.lat, city.long]} zoom={13} scrollWheelZoom={false}>
                   <TileLayer
@@ -85,6 +87,18 @@ function CityScreen() {
                     Wind speed: {weather.wind.speed}
                   </Col>
                 </Row>
+                <Row className="mt-3" style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                  <Col xs={4}>
+                    <CardHotel onClick={()=>{window.location.href=`/hotels/${city.name}`}}>
+                      <h3 style={{color:'white'}}>Hotels</h3>
+                    </CardHotel>
+                  </Col>
+                  <Col xs={4}>
+                    <CardLandmark  onClick={()=>{window.location.href=`/landmarks/${city.name}`}}>
+                      <h3 style={{color:'white'}}>Landmarks</h3>
+                    </CardLandmark>
+                  </Col>                  
+                </Row>
               </div>
             </Card>            
             }
@@ -104,4 +118,27 @@ const Image = styled.div `
   width: 100vw;
   position: fixed;
   z-index: -1;
+`
+const CardHotel = styled(Card)`
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${hotels});
+  border-radius: 20px;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor: pointer;
+`
+
+const CardLandmark = styled(Card)`
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${landmarks});
+  border-radius: 20px;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor: pointer;
 `

@@ -24,7 +24,7 @@ function HomeScreen() {
                 className="rounded" 
                 style={{position:'relative', backgroundColor:'black', color:'orange', cursor:'pointer'}}
                 onClick={()=>{
-                  window.location.href = localStorage.getItem('access')?"/plantrip":"/register"
+                  window.location.href = localStorage.getItem('access')?"/planform":"/register"
                 }}
               >
                 <img className="rounded-top" alt="new" src={New} height="150px" width="100%"/>

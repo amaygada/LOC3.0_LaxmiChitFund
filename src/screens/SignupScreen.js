@@ -20,6 +20,7 @@ function SignupScreen() {
   const [position, setPosition] = useState(null);
 
   const postRegister = async ()=>{
+    console.log("inhere");
     setMessage({color:'blue',message:' '})
     setLoading(true);
     var myHeaders = new Headers();
@@ -30,13 +31,13 @@ function SignupScreen() {
       body:JSON.stringify({"name":values.name, "email":values.email, "password":values.password}),
       redirect: 'follow'
     }
-    const data = await fetch("https://thawing-sierra-99222.herokuapp.com/api/users/register", requestOptions);
+    const data = await fetch("https://unsungtraveller.herokuapp.com/api/v1/users/register", requestOptions);
     setLoading(false);
     console.log(data.status);
     const temp = await data.text();
     if(data.status === 200){
       localStorage.setItem('access',JSON.stringify(temp));
-      window.location.href = '/';
+      window.location.href = '/login';
     }
     else if(data.status === 400){
       setMessage({ color:'red', message: temp});
@@ -55,10 +56,12 @@ function SignupScreen() {
       temp.password = (/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/).test(fieldValues.password) ? "" : "Password must have atleast one special character, one number and have a minimum length of 6"
     if(position === null){
       temp.position = position ? "" : "This field is required."
-      console.log(temp);
+    }
+    else if(position){
+      temp.position = position ? "" : "This field is required."
     }
       
-
+    console.log(temp);
     setErrors({
         ...temp
     })
@@ -106,7 +109,8 @@ function SignupScreen() {
 
   const handleClick = () => {
     validate();
-    if(errors.name === "" && errors.email === "" && errors.password === '' && errors.cpassword === '' && errors.positon){
+    console.log(errors);
+    if(errors.name === "" && errors.email === "" && errors.password === '' && errors.cpassword === ''){
       postRegister();
       console.log(values);
     }

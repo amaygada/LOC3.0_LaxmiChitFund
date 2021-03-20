@@ -24,11 +24,10 @@ export default MainNav
 
 const Navs = styled(Navbar) `
   padding: 0.8rem 2rem;
-  background: rgba(0,0,0,0.7);
-  width: 100vw;
-  z-index: 2;
+  background: rgba(0,0,0,0.8);
+  width: 98.8vw;
+  z-index: 1;
   max-width: 100vw !important;
-  position: fixed;
 `
 
 const Register = styled(Nav.Link) `

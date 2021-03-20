@@ -25,14 +25,6 @@ const Weather = ({weather, temperature, city}) => {
         <Text style={styles.subtitle}> It's Currently</Text>
         <Text style={styles.title}>{weatherConditions[weather].title}</Text>
       </View>
-      <View style={styles.buttonContainer}>
-        <Button mode="outlined" style={styles.button}>
-          See Hotels
-        </Button>
-        <Button mode="outlined" style={styles.button}>
-          Landmarks
-        </Button>
-      </View>
     </View>
   );
 };

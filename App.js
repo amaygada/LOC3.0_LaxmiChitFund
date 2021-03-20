@@ -18,14 +18,11 @@ import Chat from './src/chat.js';
 import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
 import Options from './src/Screens/options';
 import CityList from './src/Screens/PlanNew/CityList';
-<<<<<<< HEAD
 import Map from './src/map_test'
 import Landmarks from './src/Screens/PlanNew/landmark_list'
 import Extra from './src/Screens/PlanNew/extra_deets'
-=======
 import IndivisualCity from './src/Screens/PlanNew/IndivisualCity';
-import Map from './src/map_test';
->>>>>>> b30b1a27c6393f3b36442d9ec6aa48a52a5bab42
+import Hotels from './src/Screens/PlanNew/hotel_list'
 
 const Stack = createStackNavigator();
 
@@ -44,7 +41,7 @@ export default class App extends React.Component {
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{headerShown: false}}
-                initialRouteName="Test">
+                initialRouteName="Hotel">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
@@ -56,6 +53,7 @@ export default class App extends React.Component {
                 <Stack.Screen name="Landmark" component={Landmarks}/>
                 <Stack.Screen name="Extra" component={Extra}/>
                 <Stack.Screen name="Indivisual City" component={IndivisualCity}/>
+                <Stack.Screen name="Hotel" component={Hotels}/>
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

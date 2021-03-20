@@ -10,8 +10,8 @@ class Test extends React.Component{
     
     dabaao = async () => {
         try{
-            const response = await get_api_token('Delhi')
-            console.log(response)
+            const response = await login("fitz@gmail.com" , "abcd1234")
+            console.log(response.data)
         }catch(e){
             console.log(e);
         }

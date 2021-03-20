@@ -1,13 +1,13 @@
 import React from 'react'
 import {Card} from 'react-native-paper'
-import {View , Text , StyleSheet, TouchableOpacity} from 'react-native'
+import {View , Text , StyleSheet, TouchableOpacity , Image} from 'react-native'
 import {connect} from 'react-redux'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class Options extends React.Component{
 
     plan_new = () => {
-
+        this.props.navigation.navigate('Select Country')
     }
 
     current_holiday = () => {
@@ -19,9 +19,10 @@ class Options extends React.Component{
     }
 
     render(){
+        let new_ = require('../images/new.jpg')
         return(
             <View style={{flex:1 , backgroundColor:colors.bg , justifyContent : 'center' , alignContent : 'center'}}>
-                <CardComp desc="Plan New" nav={this.plan_new}/>
+                <CardComp desc="Plan New" nav={this.plan_new} src={new_}/>
                 <CardComp desc="Current Holiday" nav ={this.current_holiday}/>
                 <CardComp desc="Past Holiday" nav = {this.past_holiday}/>
             </View>
@@ -67,6 +68,6 @@ const styles = StyleSheet.create({
         alignContent : 'center',
         fontSize : 30,
         fontWeight : "bold"
-    }
+    },
 })
 

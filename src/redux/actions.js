@@ -44,6 +44,7 @@ export const user_signin_info_store = update => ({
 export const add_lat_long = update => ({
     type : ADD_LAT_LONG,
     payload : update
+
 })
 
 

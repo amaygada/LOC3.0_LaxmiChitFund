@@ -8,7 +8,7 @@ const userReducer = (state = {} , action) => {
         case CLEAR_USER_DATA:
             return ({})
         case ADD_LAT_LONG:
-            return ({user_info:{user_loc : action.payload}})
+            return ({user_loc : action.payload})
         case UPDATE_USER_DEETS:
             return ({user_info : action.payload})
         case USER_SIGNIN_INFO_STORE:

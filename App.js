@@ -19,6 +19,7 @@ import Map from './src/map_test.js';
 import Chat from './src/chat.js';
 import FirstPage from './src/Screens/FirstPage.js';
 import chooseCountry from './src/Screens/PlanNew/chooseCountry.js';
+import Options from './src/Screens/options'
 
 const Stack = createStackNavigator();
 
@@ -35,15 +36,15 @@ export default class App extends React.Component {
         <Provider store={Store}>
           <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-              <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="Select Country">
+              <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="Test">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Test" component={Test} />
                 <Stack.Screen name="Map" component={Map} />
                 <Stack.Screen name="First Page" component={FirstPage} />
                 <Stack.Screen name="Select Country" component={chooseCountry} />
-
                 <Stack.Screen name="Chat" component={Chat} />
+                <Stack.Screen name="Opt" component={Options} />
               </Stack.Navigator>
             </NavigationContainer>
           </PersistGate>

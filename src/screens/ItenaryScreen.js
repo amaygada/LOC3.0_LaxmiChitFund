@@ -33,10 +33,7 @@ function ItenaryScreen() {
                     <h4>Country : {JSON.parse(itenary.country)}</h4>
                   </Col>
                   <Col>
-                    <h4>City : {()=>{
-                      var temp = JSON.parse(localStorage.getItem('city'));
-                      return temp.name;
-                    }}</h4>
+                    <h4>City : {JSON.parse(localStorage.getItem('city')).name}</h4>
                   </Col>
                 </Row>
                 <Row className="mt-3" style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>

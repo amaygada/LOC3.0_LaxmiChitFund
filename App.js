@@ -33,6 +33,10 @@ import IndivisualHotel from './src/Screens/PlanNew/IndivisualHotel';
 import AddLandmarkIten from './src/Screens/PlanNew/add_landmark_iten'
 import AddHotelIten from './src/Screens/PlanNew/add_hotel_iten'
 import Splash from './src/Screens/Splash/splash'
+import FP from './src/Screens/PlanNew/final_pg'
+import Emergency from './src/Screens/PlanNew/emergency'
+import MI from './src/Screens/my_itens'
+import Midd from './src/Screens/midd.js'
 
 const Stack = createStackNavigator();
 
@@ -49,7 +53,7 @@ export default class App extends React.Component {
         <Provider store={Store}>
           <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Chat">
+              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Test">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Nav" component={Navigate} />
@@ -66,10 +70,14 @@ export default class App extends React.Component {
                 <Stack.Screen name="Extra" component={Extra} />
                 <Stack.Screen name="AHI" component={AddHotelIten} />
                 <Stack.Screen name="Splash" component={Splash} />
+                <Stack.Screen name="FP" component={FP} />
+                <Stack.Screen name="MI" component={MI} />
+                <Stack.Screen name = "M" component={Midd}/>
                 <Stack.Screen
                   name="Indivisual City"
                   component={IndivisualCity}
                 />
+                <Stack.Screen name="EM" component={Emergency} />
                 <Stack.Screen name="Hotel" component={Hotels} />
                 <Stack.Screen name="Settings" component={Settings} />
                 <Stack.Screen

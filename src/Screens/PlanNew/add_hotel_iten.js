@@ -49,15 +49,21 @@ class Extra extends Component {
   };
 
   add = async () => {
-  
+    let a = this.state.start_date;
+    let p = a.getMonth() + 1;
+    p = a.getFullYear() + '-' + '0' + p + '-' + a.getDate();
+    let b = this.state.end_date;
+    let q = b.getMonth() + 1;
+    q = b.getFullYear() + '-' + '0' + q + '-' + b.getDate();
+
     let o = {
         "type" : "hotel",
         "deets" : this.props.route.params.obj,
-        "start_date" : this.state.start_date,
-        "end_date" : this.state.end_date
+        "start_date" : p,
+        "end_date" : q
     }
     await this.props.add_itenary(o)
-    this.props.navigation.navigate('Hotel')
+    this.props.navigation.navigate('FP')
   };
 
   setDate = val => {
@@ -67,7 +73,7 @@ class Extra extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <CurvedHeader title="Build Itenary" />
+          <CurvedHeader title="Build Itinerary" />
         <View style={styles.autocompleteContainer}>
           <Button labelStyle={{color: '#1e5f74' , fontSize:18}} style={{marginTop: 2}}>
             Enter Check in date

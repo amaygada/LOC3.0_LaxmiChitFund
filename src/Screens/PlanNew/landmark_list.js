@@ -195,9 +195,8 @@ class Attractions extends Component {
           <FAB
             style={styles.fab}
             small={true}
-            color="red"
             icon="message-text-outline"
-            onPress={() => console.log('Pressed')}
+            onPress={() => {this.props.navigation.navigate('Chat')}}
           />
         </View>
       );

@@ -49,6 +49,9 @@ class Extra extends Component {
 
   add = async () => {
     let a = this.state.start_date;
+    let p = a.getMonth() + 1;
+    p = a.getFullYear() + '-' + '0' + p + '-' + a.getDate();
+
     if (a < new Date()) {
       alert('Please enter correct dates!');
       return;
@@ -56,7 +59,7 @@ class Extra extends Component {
     let o = {
         "type" : "landmark",
         "deets" : this.props.route.params.obj,
-        "date" : this.state.start_date
+        "date" : p
     }
     await this.props.add_itenary(o)
     this.props.navigation.navigate('Landmark')
@@ -69,7 +72,7 @@ class Extra extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <CurvedHeader title="Build Itenary" />
+          <CurvedHeader title="Build itinerary" />
         <View style={{marginTop : 10}}>
             <Icon name={'map-marker-outline'} color='#bb8082' size={100} style={{alignSelf:'center' , alignContent:'center' , justifyContent:'center'}}/>
         </View>

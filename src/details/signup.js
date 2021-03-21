@@ -79,8 +79,7 @@ class Signup extends React.Component{
             "email":this.state.email,
             "password": this.state.password
         }
-        this.props.user_signin_info_store(obj);
-        console.log('Sign in done')
+        this.props.navigation.navigate('Login')
     }
 
     states_arr = [{value : "Andaman and Nicobar Islands"}, {value :"Andhra Pradesh"}, {value :"Arunachal Pradesh"}, {value :"Assam"}, {value :"Bihar"}, {value :"Chandigarh"}, {value :"Chhattisgarh"}, {value :"Dadra and Nagar Haveli"}, {value :"Daman and Diu"}, {value :"Delhi"}, {value :"Goa"}, {value :"Gujarat"}, {value :"Haryana"}, {value :"Himachal Pradesh"}, {value :"Jammu and Kashmir"}, {value :"Jharkhand"}, {value :"Karnataka"}, {value :"Kerala"}, {value :"Lakshadweep"}, {value :"Madhya Pradesh"}, {value :"Maharashtra"}, {value :"Manipur"}, {value :"Meghalaya"}, {value :"Mizoram"}, {value :"Nagaland"}, {value :"Orissa"}, {value :"Pondicherry"}, {value :"Punjab"}, {value :"Rajasthan"}, {value :"Sikkim"}, {value :"Tamil Nadu"}, {value :"Tripura"}, {value :"Uttaranchal"}, {value :"Uttar Pradesh"}, {value :"West Bengal"}]

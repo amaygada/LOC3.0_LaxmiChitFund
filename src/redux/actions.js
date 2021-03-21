@@ -1,6 +1,6 @@
 //api imports
 import { ActionSheetIOS } from 'react-native'
-import {login} from './../api/api.js'
+import {login , signup} from './../api/api.js'
 
 //action types
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA'
@@ -21,8 +21,14 @@ export const ADD_EXPENSE = 'ADD_EXPENSE'
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE'
 export const SET_EXPENSE = 'SET_EXPENSE'
 export const ADD_ITENARY = 'ADD_ITENARY'
+export const UPDATE_NAME = 'UPDATE_NAME'
 
 //action creators
+export const update_name = update => ({
+    type : UPDATE_NAME , 
+    payload : update
+})
+
 export const add_itenary = update => ({
     type : ADD_ITENARY,
     payload : update
@@ -130,13 +136,11 @@ export const loginUser = (email , password) => async dispatch => {
 
 export const signupUser = (obj) => async dispatch => {
     try{
-        dispatch(change_sign_stat(true))
-        const response = await signup_apicall(obj)
-        dispatch(signin_user_update(response.data))
-        console.log(response.data)
-        dispatch(change_sign_stat(false))
+        dispatch(change_sign_status(true))
+        const response = await signup(obj)
+        dispatch(change_sign_status(false))
     }catch(e){
-        dispatch(change_sign_stat(false))
+        dispatch(change_sign_status(false))
         console.log(e)
         alert(e)
     }

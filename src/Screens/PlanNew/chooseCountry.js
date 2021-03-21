@@ -53,18 +53,18 @@ class ChooseCountry extends Component {
             source={require('../../images/select_country.png')}
           />
           <Button
-            style={styles.button2}
+            style={{marginTop : 90 , backgroundColor : "#1e5f74" , marginBottom : 20 , marginHorizontal:30}}
             mode="contained"
             onPress={() => console.log('Pressed')}>
             Help Me Decide
           </Button>
-        </View>
-        <Button
-          style={styles.button}
-          mode="contained"
-          onPress={this.get_country}>
-          Next
+          <Button
+            style={{backgroundColor : "#1e5f74"}}
+            mode="contained"
+            onPress={this.get_country}>
+            Next
         </Button>
+        </View>
       </View>
     );
   }
@@ -82,24 +82,6 @@ const styles = StyleSheet.create({
     marginTop: hp('3%'),
     marginHorizontal: wp('2%'),
   },
-  button: {
-    position: 'absolute',
-    bottom: hp('2%'),
-    width: wp('96%'),
-    height: hp('7%'),
-    alignSelf: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#1e5f7f',
-  },
-  button2: {
-    position: 'absolute',
-    bottom: hp('12%'),
-    width: wp('50%'),
-    height: hp('7%'),
-    alignSelf: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#1e5f7f',
-  },
   container: {
     flex: 1,
   },
@@ -109,5 +91,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: hp('35%'),
     width: hp('35%'),
-  },
+  }
 });

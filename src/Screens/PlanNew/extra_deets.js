@@ -109,10 +109,11 @@ class Extra extends Component {
               this.setState({end_date: val});
             }}
           />
-        </View>
-        <Button style={styles.button} mode="contained" onPress={this.get_deets}>
+
+        <Button style={{backgroundColor : "#1e5f74" , marginTop : 20}} mode="contained" onPress={this.get_deets}>
           Next
         </Button>
+        </View>
       </View>
     );
   }

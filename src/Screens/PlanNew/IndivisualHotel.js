@@ -22,7 +22,7 @@ export default class IndivisualHotel extends React.Component {
   };
 
   go_to_landmark = () => {
-    console.log('hotel ' + JSON.stringify(this.props.route.params.obj));
+    this.props.navigation.navigate('Landmark')
   };
 
   go_to_ahi = () => {
@@ -72,6 +72,7 @@ export default class IndivisualHotel extends React.Component {
                 Add to Itinerary
               </Button>
             </View>
+
           </LinearGradient>
         )}
       </View>
@@ -123,11 +124,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
   },
+  buttonContainer2: {
+    position: 'absolute',
+    bottom: hp('8%'),
+    alignItems: 'center',
+    marginHorizontal: wp('10%'),
+    alignContent: 'center',
+  },
   buttonContainer: {
     position: 'absolute',
     bottom: hp('2%'),
     alignItems: 'center',
     marginHorizontal: wp('10%'),
     alignContent: 'center',
-  },
+  }
 });

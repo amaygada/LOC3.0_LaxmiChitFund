@@ -2,7 +2,7 @@ import React from 'react'
 import {Text , View , Image} from'react-native'
 import {Button} from 'react-native-paper'
 import {login , signup , get_cities_attr , get_image_city , get_hotels , get_hotel_photo} from './api/api.js'
-import {clear_user_data , change_log_status , clear_new} from './redux/actions.js'
+import {clear_user_data , change_log_status , clear_new , signupUser} from './redux/actions.js'
 import {connect} from 'react-redux'
 import Store from './redux/store.js'
 
@@ -10,8 +10,13 @@ class Test extends React.Component{
     
     dabaao = async () => {
         try{
-            const response = await get_hotel_photo('634418464')
-            console.log(response.data.hotelImages[0])//use "web" for web compatible images
+            let o={
+                "name" : "amaygaa",
+                "email" : "amayga@gmail.com",
+                "password" : "aaaa1234"
+            }
+            const response = await this.props.signupUser(o)
+            console.log(response)//use "web" for web compatible images
         }catch(e){
             console.log(e);
         }
@@ -36,4 +41,4 @@ class Test extends React.Component{
     }
 }
 
-export default connect(null , {clear_user_data , change_log_status , clear_new})(Test)
+export default connect(null , {clear_user_data , change_log_status , clear_new , signupUser})(Test)

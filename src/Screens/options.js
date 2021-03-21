@@ -14,7 +14,9 @@ class Options extends React.Component {
 
   current_holiday = () => {};
 
-  past_holiday = () => {};
+  past_holiday = () => {
+    this.props.navigation.navigate('MI')
+  };
 
   render() {
     let new_ = require('../images/new.jpg');
@@ -26,9 +28,8 @@ class Options extends React.Component {
           justifyContent: 'center',
           alignContent: 'center',
         }}>
-        <CardComp desc="Plan New" nav={this.plan_new} src={new_} />
-        <CardComp desc="Current Holiday" nav={this.current_holiday} />
-        <CardComp desc="Past Holiday" nav={this.past_holiday} />
+        <CardComp desc="Plan a Trip" nav={this.plan_new} src={new_} />
+        <CardComp desc="My Itineraries" nav={this.past_holiday} />
       </View>
     );
   }

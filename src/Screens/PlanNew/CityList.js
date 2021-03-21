@@ -204,7 +204,7 @@ class App extends Component {
             style={styles.fab}
             small={false}
             icon="message-text-outline"
-            onPress={() => console.log('Pressed')}
+            onPress={()=>{this.props.navigation.navigate('Chat')}}
           />
         </View>
       );

@@ -5,28 +5,19 @@ import styled from 'styled-components';
 import background from '../images/plantrip.jpeg';
 import { Button, Card, Container, Row, Col, Form } from 'react-bootstrap';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import Rating from '../components/Rating';
 
-function HotelScreen() {
+function LandmarkScreen() {
   const [loading, setLoading] = useState(true);
-  const [hotel, setHotel] = useState();
-  const [lat, setLat] = useState();
-  const [long, setLong] = useState();
+  const [landmark, setLandmark] = useState();
   const [date, setDate] = useState();
-  const [sdate, setSdate] = useState();
-  const [edate, setEdate] = useState();
   const [form, setForm] = useState(false);
   const [message, setMessage] = useState('');
 
+
   useEffect(()=>{
     if(localStorage.getItem('city')){
-      setHotel(JSON.parse(localStorage.getItem('hotel')));
-      console.log(JSON.parse(localStorage.getItem('hotel')));
-      var temp = JSON.parse(localStorage.getItem('hotel'));
-      temp = temp.coordinates;
-      console.log(temp.lat)
-      setLat(temp.lat);
-      setLong(temp.long);
+      setLandmark(JSON.parse(localStorage.getItem('landmark')));
+      console.log(JSON.parse(localStorage.getItem('landmark')));
       setLoading(false);
     }
     else
@@ -43,12 +34,12 @@ function HotelScreen() {
           {loading?<div className="mt-5"><Loader height='100px' width='100px' /></div> :
             <Card className="pt-0 pb-4 mb-5" style={{marginTop:'60px', backgroundColor:'rgba(0,0,0,0.8)', display: 'flex', justifyContent:'center', alignItems:'center', color:'orange', borderRadius:'20px'}}>
               <span style={{width:'100%'}}>
-                <MapContainer center={[lat,long]} zoom={16} scrollWheelZoom={false}>
+                <MapContainer center={[landmark.lat, landmark.long]} zoom={13} scrollWheelZoom={false}>
                   <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  <Marker position={[lat,long]}>
+                  <Marker position={[landmark.lat, landmark.long]}>
                     <Popup>
                       A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
@@ -56,41 +47,34 @@ function HotelScreen() {
                 </MapContainer>
               </span>
               <br/>
-              <h2>{hotel.name}</h2>
-              <h5>{hotel.address}</h5>
-              <Rating value={hotel.star} text={`(${hotel.star})`} />
+              <h2>{landmark.name}</h2>
+              <h5>{landmark.caption.replace(/(<([^>]+)>)/gi, "")}</h5>
               <Button className="btn btn-dark mt-4" onClick={()=>{setForm(true)}}>Add to itinerary</Button>
                 {form && 
                 <>
                 <div class="form-group mt-4 text-center">
-                  <label for="exampleInputEmail1">Start date :&nbsp;&nbsp;&nbsp;</label>
-                  <input type="date" name="startdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Number" value={sdate} style={{display:'inline', width:'70%'}} onChange={(e)=>{setSdate(e.target.value)}}/>
-                </div>
-                <div class="form-group mt-4 text-center">
-                  <label for="exampleInputEmail1">End date :&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                  <input type="date" name="startdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Number" value={edate} style={{display:'inline', width:'70%'}} onChange={(e)=>{setEdate(e.target.value)}}/>
+                  <label for="exampleInputEmail1">Select date :&nbsp;</label>
+                  <input type="date" name="startdate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Number" value={date} style={{display:'inline', width:'70%'}} onChange={(e)=>{setDate(e.target.value)}}/>
                 </div>
                 <Row style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
                   <Button className="btn btn-dark mt-4" onClick={()=>{
-                    if(sdate && edate){
+                    if(date){
                       if(localStorage.getItem('itenary')){
                         console.log("bruv")
-                        var country = localStorage.getItem('country');
                         var itinerary = JSON.parse(localStorage.getItem('itenary'));
-                        itinerary = {...itinerary, sdate:sdate, edate:edate, hotel:hotel, country:country};
+                        itinerary = {...itinerary, date:date, landmark:landmark};
                         localStorage.setItem('itenary', JSON.stringify(itinerary));
-                        if(itinerary.landmark)
+                        if(itinerary.hotel)
                           window.location.href = '/itinerary';
                         else
-                          window.location.href = '/landmarks';
+                          window.location.href = '/hotels';
                       } else{
-                        var country = localStorage.getItem('country');
-                        var itinerary = { sdate:sdate, edate:edate, hotel:hotel, country:country};
+                        var itinerary = { date:date, landmark:landmark};
                         localStorage.setItem('itenary', JSON.stringify(itinerary));
-                        if(itinerary.landmark)
+                        if(itinerary.hotel)
                           window.location.href = '/itinerary';
                         else
-                          window.location.href = '/landmarks';
+                          window.location.href = '/hotels';
                       }
                     } else{
                       setMessage('Please fill all fields')
@@ -110,7 +94,7 @@ function HotelScreen() {
   )
 }
 
-export default HotelScreen
+export default LandmarkScreen
 
 const Image = styled.div `
   background: url(${background});
@@ -120,3 +104,4 @@ const Image = styled.div `
   position: fixed;
   z-index: -1;
 `
+

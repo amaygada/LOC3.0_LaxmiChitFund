@@ -9,6 +9,9 @@ import HotelsScreen from './screens/HotelsScreen';
 import LandmarksScreen from './screens/LandmarksScreen';
 import FormScreen from './screens/FormScreen';
 import HotelScreen from './screens/HotelScreen';
+import LandmarkScreen from './screens/LandmarkScreen';
+import ItenaryScreen from './screens/ItenaryScreen';
+import ExpenseScreen from './screens/ExpenseScreen';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route component={LandmarksScreen} path="/landmarks" />
         <Route component={FormScreen} path="/planform" />
         <Route component={HotelScreen} path="/hotel" />
+        <Route component={LandmarkScreen} path="/landmark" />
+        <Route component={ItenaryScreen} path="/itinerary" />
+        <Route component={ExpenseScreen} path="/expenses" />
       </Switch>
     </div>
   );

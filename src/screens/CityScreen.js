@@ -27,7 +27,7 @@ function CityScreen() {
     try{
       var City = JSON.parse(localStorage.getItem('city'));
       City = City.name;
-      var data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${City}&appid=e853535435b75dc53df232717c82891f&units=metric`);
+      var data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${City}&appid=011bb71073a08bb8a658b16d05020d4f&units=metric`);
       data = await data.json();
       setWeather(data);
       console.log(data);

@@ -37,7 +37,7 @@ function HomeScreen() {
             <Col xs={3}>
               <Card className="rounded" style={{position:'relative', backgroundColor:'black', color:'orange', cursor:'pointer'}}
                 onClick={()=>{
-                  window.location.href = localStorage.getItem('access')?"/currenttrip":"/register"
+                  window.location.href = localStorage.getItem('access')?"/expenses":"/register"
                 }}
               >
                 <img className="rounded-top" alt="present" src={Present} height="150px" width="100%"/>
@@ -50,13 +50,13 @@ function HomeScreen() {
             <Col xs={3}>
               <Card className="rounded" style={{position:'relative', backgroundColor:'black', color:'orange', cursor:'pointer'}}
                 onClick={()=>{
-                  window.location.href = localStorage.getItem('access')?"/pasttrip":"/register"
+                  window.location.href = localStorage.getItem('access')?"/itinerary":"/register"
                 }}
               >
                 <img className="rounded-top" alt="past" src={Past} height="150px" width="100%"/>
-                <h5 className="mt-1" style={{color:'white'}}>Past Holiday</h5>
+                <h5 className="mt-1" style={{color:'white'}}>Itinerary</h5>
                 <div className="mb-1">
-                  View your past holidays.
+                  Holiday description.
                 </div>
               </Card>
             </Col>

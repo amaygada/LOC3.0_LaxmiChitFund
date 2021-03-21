@@ -14,6 +14,7 @@ function MainNav() {
             <Register href='/pastttrip' eventKey="link-3">Travel History</Register>
             <Register href='/' eventKey="link-4"onClick={()=>{
               localStorage.removeItem('access');
+              localStorage.removeItem('itenary');
             }}>Logout</Register>
         </Navs>
       </>

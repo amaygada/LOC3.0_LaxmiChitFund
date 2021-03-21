@@ -79,7 +79,12 @@ function LandmarksScreen() {
               {landmarks.map((landmark, index)=>{
                 return(
                   <Col xs={4}>
-                    <Card className="my-3 pb-1 rounded text-center" style={{backgroundColor:'rgba(0,0,0,0.8)', color:'orange', cursor:'pointer'}} >
+                    <Card className="my-3 pb-1 rounded text-center" style={{backgroundColor:'rgba(0,0,0,0.8)', color:'orange', cursor:'pointer'}} 
+                      onClick={()=>{
+                        localStorage.setItem('landmark', JSON.stringify(landmark));
+                        window.location.href = `/landmark`;
+                      }}
+                    >
                       <img src={Landmarks} alt=""/>
                       <h5>{landmark.name}</h5>
                       {landmark.caption}

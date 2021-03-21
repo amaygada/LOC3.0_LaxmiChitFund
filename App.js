@@ -27,8 +27,8 @@ import Settings from './src/Screens/settings';
 import IndivisualLandmark from './src/Screens/PlanNew/IndivisualLandmark.js';
 import Navigate from './src/Screens/navigate.js';
 import Loader from './src/components/loader.js';
-import Expense from './src/Screens/expense'
-import AddExpense from './src/Screens/add_expense'
+import Expense from './src/Screens/expense';
+import AddExpense from './src/Screens/add_expense';
 import IndivisualHotel from './src/Screens/PlanNew/IndivisualHotel';
 import AddLandmarkIten from './src/Screens/PlanNew/add_landmark_iten'
 import AddHotelIten from './src/Screens/PlanNew/add_hotel_iten'
@@ -37,6 +37,7 @@ import FP from './src/Screens/PlanNew/final_pg'
 import Emergency from './src/Screens/PlanNew/emergency'
 import MI from './src/Screens/my_itens'
 import Midd from './src/Screens/midd.js'
+import Itinerary from './src/Screens/Itinerary.js';
 
 const Stack = createStackNavigator();
 
@@ -53,7 +54,9 @@ export default class App extends React.Component {
         <Provider store={Store}>
           <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Test">
+              <Stack.Navigator
+                screenOptions={{headerShown: false}}
+                initialRouteName="Splash">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Nav" component={Navigate} />
@@ -84,7 +87,8 @@ export default class App extends React.Component {
                   name="Indivisual Landmark"
                   component={IndivisualLandmark}
                 />
-                <Stack.Screen name="Expense" component={Expense}/>
+                <Stack.Screen name="Expense" component={Expense} />
+                <Stack.Screen name="Itinerary" component={Itinerary} />
                 <Stack.Screen
                   name="Indivisual Hotel"
                   component={IndivisualHotel}

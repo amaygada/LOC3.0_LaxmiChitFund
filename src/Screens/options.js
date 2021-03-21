@@ -12,7 +12,9 @@ class Options extends React.Component {
     this.props.navigation.navigate('Select Country');
   };
 
-  current_holiday = () => {};
+  current_holiday = () => {
+    this.props.navigation.navigate('Itinerary');
+  };
 
   past_holiday = () => {
     this.props.navigation.navigate('MI')

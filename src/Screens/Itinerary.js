@@ -39,7 +39,14 @@ class Itinerary extends Component {
     this.state = {
       currentPosition: 0,
       total: 5,
+      l : []
     };
+    let k = this.props.it
+    let a = []
+    a[0] = k[2]
+    a[1] = k[0]
+    a[2] = k[1]
+    this.state.l = a
   }
 
   getStepIndicatorIconConfig = ({position, stepStatus}) => {
@@ -71,23 +78,33 @@ class Itinerary extends Component {
         left: wp('3%'),
       }}>
       <Text style={[styles.big]}>{params.label}</Text>
-      {params.position === 4 ? (
+      
+      {params.position === 3 ? (
         <View>
           <Subheading style={{fontSize: 15}}>
-            {this.props.it[0].deets.name}
+            {this.state.l[0].deets.name}
           </Subheading>
           <Paragraph style={{fontSize: 13}}>
-            {this.props.it[0].deets.name}
+            {this.state.l[0].end_date}
           </Paragraph>
         </View>
-      ) : (
+      ) : params.position!==0 ? ( 
         <View>
           <Subheading style={{fontSize: 15}}>
-            {this.props.it[params.position].deets.name}
+            {this.state.l[params.position].deets.name}
           </Subheading>
           <Subheading style={{fontSize: 13}}>
-            {this.props.it[params.position].deets.name}
+            {this.state.l[params.position].date}
           </Subheading>
+        </View>
+      ):(
+        <View>
+          <Subheading style={{fontSize: 15}}>
+            {this.state.l[0].deets.name}
+          </Subheading>
+          <Paragraph style={{fontSize: 13}}>
+            {this.state.l[0].start_date}
+          </Paragraph>
         </View>
       )}
     </View>
@@ -98,7 +115,7 @@ class Itinerary extends Component {
   );
 
   render() {
-    console.log(JSON.stringify(this.props.it));
+    //console.log(JSON.stringify(this.props.it));
     const labels = ['Hotel Check-In'];
     this.props.it.forEach(element => {
       if (element.type === 'landmark') {
@@ -111,7 +128,7 @@ class Itinerary extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.header_style}>
-          <Text style={styles.header_title}>{this.props.title}</Text>
+          <Text style={styles.header_title}>My Itinerary</Text>
         </View>
         <View style={styles.tracker}>
           <StepIndicator

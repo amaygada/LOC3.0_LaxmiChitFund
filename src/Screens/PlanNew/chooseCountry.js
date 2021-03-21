@@ -55,7 +55,7 @@ class ChooseCountry extends Component {
           <Button
             style={{marginTop : 90 , backgroundColor : "#1e5f74" , marginBottom : 20 , marginHorizontal:30}}
             mode="contained"
-            onPress={() => console.log('Pressed')}>
+            onPress={() => {this.props.navigation.navigate('Chat')}}>
             Help Me Decide
           </Button>
           <Button

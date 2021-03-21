@@ -15,7 +15,7 @@ class MyIten extends React.Component{
         return(
             <View>
                 <CurvedHeader title="Choose"/>
-                <CardComp desc="Check Itinerary" nav={()=>{}}/>
+                <CardComp desc="Check Itinerary" nav={()=>{this.props.navigation.navigate('Itinerary')}}/>
                 <CardComp desc="Track Expenses" nav={()=>{this.props.navigation.navigate('Expense')}}/>
             </View>
         )

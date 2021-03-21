@@ -16,12 +16,20 @@ class MyIten extends React.Component{
     }
 
     render(){
+      if(Store.getState().name!==""){
         return(
             <View>
                 <CurvedHeader title="Itineraries"/>
                 <CardComp desc={Store.getState().name} nav={this.n}/>
             </View>
         )
+      }else{
+        return(
+          <View>
+              <CurvedHeader title="Itineraries"/>
+          </View>
+      )
+      }
     }
 
 }
